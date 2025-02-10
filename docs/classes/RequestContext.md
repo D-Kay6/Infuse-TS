@@ -6,7 +6,7 @@
 
 # Class: RequestContext
 
-Defined in: src/lib/context.ts:5
+Defined in: [src/lib/context.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/lib/context.ts#L5)
 
 ## Constructors
 
@@ -24,7 +24,7 @@ Defined in: src/lib/context.ts:5
 
 > `static` **get**\<`T`\>(`key`): `undefined` \| `T`
 
-Defined in: src/lib/context.ts:12
+Defined in: [src/lib/context.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/lib/context.ts#L12)
 
 Try to get a value from the current context.
 
@@ -54,7 +54,7 @@ The value if it exists, otherwise undefined.
 
 > `static` **set**\<`T`\>(`key`, `value`): `void`
 
-Defined in: src/lib/context.ts:23
+Defined in: [src/lib/context.ts:23](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/lib/context.ts#L23)
 
 Set a value in the current context.
 
@@ -92,7 +92,7 @@ If there is no context, nothing will happen.
 
 > `static` **run**(`fn`): `void`
 
-Defined in: src/lib/context.ts:32
+Defined in: [src/lib/context.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/lib/context.ts#L32)
 
 Run a function in a new context.
 

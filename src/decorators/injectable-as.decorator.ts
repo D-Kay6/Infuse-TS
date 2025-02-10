@@ -29,7 +29,7 @@ export function InjectableAs<Parent extends object, Type extends Parent, Class e
   const scope = typeof args[0] === 'number' ? args.shift() as Scope : Scope.Transient;
   const dependencies = args as Dependencies<Class>;
   return (constructor: Class, _context: ClassDecoratorContext<Class>) => {
-    const container = Container.current;
+    const container = Container.default;
     if (!container) {
       throw new Error('Container not found');
     }

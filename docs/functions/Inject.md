@@ -8,7 +8,7 @@
 
 > **Inject**\<`Value`\>(`dependency`): [`FieldDecoration`](../type-aliases/FieldDecoration.md)\<`Value`\>
 
-Defined in: src/decorators/inject.decorator.ts:12
+Defined in: [src/decorators/inject.decorator.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/decorators/inject.decorator.ts#L12)
 
 Injects a dependency into a field.
 

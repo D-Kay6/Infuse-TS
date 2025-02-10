@@ -1,9 +1,10 @@
 # Infuse-TS
-A fully experimental-free IoC container for TypeScript. Uses the TC39 Decorators added in TypeScript 5.0 to provide a clean and easy-to-use API.
+A pure TypeScript DI container that supports both decorators and manual registration without relying on experimental features.
+Has support for context-based scoping and collection resolution.
 
 ## Install
-```bash
-$ npm install infuse-ts
+```sh
+npm install infuse-ts
 ```
 
 ## Usage
@@ -35,7 +36,7 @@ export class MyController {
 }
 ```
 
-You can also use the `@Inject` decorator to inject dependencies into a class field.
+You can also use the `@Inject` decorator to Inject dependencies into a class field.
 
 ```typescript
 import { Injectable, Inject, Scope } from 'infuse-ts';
@@ -93,7 +94,9 @@ export class MyController {
 ```
 
 ### Without Decorators
-You will need to use the `Container` class to register and resolve dependencies.
+In order to register a service without decorators, you must use the `Container` class directly.
+The `Container` class has a static property called `default` that holds a singleton instance of the container, but you can also create your own instance of the container.
+
 Each one of the registration methods returns a registration object to define how the dependency should be resolved.
 You must always call either of the `as*` methods to actually register the dependency.
 
@@ -118,8 +121,8 @@ export class MyController {
   }
 }
 
-Container.current.registerComponent(MyService).instancePerDependency().asSelf();
-Container.current.registerComponent(MyController, MyService).instancePerRequest().asSelf();
+Container.default.registerComponent(MyService).instancePerDependency().asSelf();
+Container.default.registerComponent(MyController, MyService).instancePerRequest().asSelf();
 ```
 
 #### Registering Instances
@@ -136,7 +139,7 @@ export class MyService {
 }
 
 const myService = new MyService();
-Container.current.registerInstance(MyService, myService).asSelf();
+Container.default.registerInstance(MyService, myService).asSelf();
 ```
 
 #### Registering Factories
@@ -153,11 +156,17 @@ export class MyService {
   }
 }
 
-Container.current.registerFactory(MyService, (container) => new MyService()).instancePerDependency().asSelf();
+Container.default.registerFactory(MyService, (container) => new MyService()).instancePerDependency().asSelf();
 ```
 
-## Background
-When looking for an IoC container for TypeScript, I found that pretty much all of them still rely on the experimental Decorators API.
-While this is probably still fine, as there are plenty of large projects using it, I wanted to create a library that didn't rely on experimental features but still offered the ease of working with decorators.
+### Caveats
+There are a few caveats to be aware of when using Infuse-TS.
+- Circular dependencies are not supported.
+- Modules need to be imported for the decorators to work. This is a limitation of TypeScript.
 
-I have been using Infuse-TS in my projects for a while now, and it has been working great. I hope you find it useful too!
+## Background
+I'm originally a C# developer, and I've been using DI containers for many years. When I started working with TypeScript halfway through 2024, I initially had to learn how to work with the type system and the language itself.
+A couple of months later, I was starting to miss the ease of working with DI containers in C#. However, I found that most DI containers for TypeScript were using the experimental Decorators API, even though TypeScript added support for decorators in version 5.0.
+I wanted to create a library that didn't rely on experimental features but still offered the ease of working with decorators.
+That's how Infuse-TS was born. It uses the TS5.0 decorators to provide a similar API to other DI containers, but without the need for experimental features.
+I know there is something to be said about not using DI containers in JavaScript/TypeScript, but I find them to be a useful tool when used correctly.

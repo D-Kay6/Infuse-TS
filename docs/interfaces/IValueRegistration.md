@@ -6,7 +6,7 @@
 
 # Interface: IValueRegistration\<Type\>
 
-Defined in: src/registration/registration.builder.ts:8
+Defined in: [src/registration/registration.builder.ts:8](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L8)
 
 ## Extended by
 
@@ -22,7 +22,7 @@ Defined in: src/registration/registration.builder.ts:8
 
 > **asSelf**(): `this`
 
-Defined in: src/registration/registration.builder.ts:13
+Defined in: [src/registration/registration.builder.ts:13](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L13)
 
 Register the item under its own name.
 
@@ -42,7 +42,7 @@ This should always be called if not using an alias.
 
 > **as**(`name`): `this`
 
-Defined in: src/registration/registration.builder.ts:19
+Defined in: [src/registration/registration.builder.ts:19](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L19)
 
 Register the item under a different name.
 
@@ -62,7 +62,7 @@ The name to register the item under.
 
 > **as**\<`Parent`, `Class`\>(`component`): `this`
 
-Defined in: src/registration/registration.builder.ts:25
+Defined in: [src/registration/registration.builder.ts:25](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L25)
 
 Register the item as its parent type.
 

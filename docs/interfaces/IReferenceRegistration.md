@@ -6,7 +6,7 @@
 
 # Interface: IReferenceRegistration\<Type\>
 
-Defined in: src/registration/registration.builder.ts:28
+Defined in: [src/registration/registration.builder.ts:28](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L28)
 
 ## Extends
 
@@ -22,7 +22,7 @@ Defined in: src/registration/registration.builder.ts:28
 
 > **asSelf**(): `this`
 
-Defined in: src/registration/registration.builder.ts:13
+Defined in: [src/registration/registration.builder.ts:13](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L13)
 
 Register the item under its own name.
 
@@ -46,7 +46,7 @@ This should always be called if not using an alias.
 
 > **as**(`name`): `this`
 
-Defined in: src/registration/registration.builder.ts:19
+Defined in: [src/registration/registration.builder.ts:19](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L19)
 
 Register the item under a different name.
 
@@ -70,7 +70,7 @@ The name to register the item under.
 
 > **as**\<`Parent`, `Class`\>(`component`): `this`
 
-Defined in: src/registration/registration.builder.ts:25
+Defined in: [src/registration/registration.builder.ts:25](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L25)
 
 Register the item as its parent type.
 
@@ -102,7 +102,7 @@ The parent type to register the item as.
 
 > **singleInstance**(): `this`
 
-Defined in: src/registration/registration.builder.ts:32
+Defined in: [src/registration/registration.builder.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L32)
 
 Register the item as a singleton.
 
@@ -116,7 +116,7 @@ Register the item as a singleton.
 
 > **instancePerDependency**(): `this`
 
-Defined in: src/registration/registration.builder.ts:38
+Defined in: [src/registration/registration.builder.ts:38](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L38)
 
 Register the item as a transient dependency.
 
@@ -134,7 +134,7 @@ This is the default scope.
 
 > **instancePerRequest**(): `this`
 
-Defined in: src/registration/registration.builder.ts:44
+Defined in: [src/registration/registration.builder.ts:44](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L44)
 
 Register the item as a request dependency.
 

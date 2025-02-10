@@ -8,7 +8,7 @@
 
 > **isCollection**\<`Type`\>(`item`): `item is Collection<Type>`
 
-Defined in: src/lib/utilities.ts:33
+Defined in: [src/lib/utilities.ts:33](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/lib/utilities.ts#L33)
 
 Check if the item is a collection.
 

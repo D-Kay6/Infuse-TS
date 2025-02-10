@@ -8,7 +8,7 @@
 
 > **MethodDecoration**\<`Target`\>: \<`This`\>(`target`, `context`) => `Target`
 
-Defined in: src/types/decoration.ts:22
+Defined in: [src/types/decoration.ts:22](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/types/decoration.ts#L22)
 
 The decoration method for a method.
 

@@ -8,7 +8,7 @@
 
 > **ClassDecoration**\<`Class`\>: (`constructor`, `context`) => `Class`
 
-Defined in: src/types/decoration.ts:15
+Defined in: [src/types/decoration.ts:15](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/types/decoration.ts#L15)
 
 The decoration method for a class.
 

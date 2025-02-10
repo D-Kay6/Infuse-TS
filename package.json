@@ -1,7 +1,7 @@
 {
   "name": "infuse-ts",
-  "description": "DI-Container using only fully-supported TypeScript features",
-  "version": "0.2.3",
+  "description": "A pure TypeScript DI container that supports both decorators and manual registration without relying on experimental features.",
+  "version": "0.3.0",
   "license": "MIT",
   "author": "Damian Kraaijeveld",
   "repository": {
@@ -24,8 +24,8 @@
     "test:lint": "eslint src --ext .ts",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
     "test:unit": "jest",
-    "doc:md": "npm run clean:doc && typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --out docs",
-    "doc:json": "npm run clean:doc && typedoc src/ --exclude **/*.spec.ts --target ES6 --mode file --json docs/typedoc.json",
+    "doc:md": "npm run clean:doc && typedoc src/ --exclude **/*.spec.ts --out docs",
+    "doc:json": "npm run clean:doc && typedoc src/ --exclude **/*.spec.ts --json docs/typedoc.json",
     "publish:remote": "npm run clean:dist && npm run build && npm publish",
     "publish:local": "npm run clean:dist && npm run build && npm pack"
   },
@@ -59,5 +59,15 @@
   "dependencies": {
     "cls-hooked": "^4.2.2"
   },
-  "files": ["dist"]
+  "files": ["dist"],
+  "keywords": [
+    "typescript",
+    "decorator",
+    "dependency-injection",
+    "di",
+    "inversion-of-control",
+    "ioc",
+    "container",
+    "infuse"
+  ]
 }

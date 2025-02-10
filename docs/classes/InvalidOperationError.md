@@ -6,7 +6,7 @@
 
 # Class: InvalidOperationError
 
-Defined in: src/errors/invalid-operation.error.ts:1
+Defined in: [src/errors/invalid-operation.error.ts:1](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/errors/invalid-operation.error.ts#L1)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: src/errors/invalid-operation.error.ts:1
 
 > **new InvalidOperationError**(`message`?): [`InvalidOperationError`](InvalidOperationError.md)
 
-Defined in: src/errors/invalid-operation.error.ts:2
+Defined in: [src/errors/invalid-operation.error.ts:2](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/errors/invalid-operation.error.ts#L2)
 
 #### Parameters
 

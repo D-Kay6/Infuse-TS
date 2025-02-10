@@ -8,7 +8,7 @@
 
 > **Dependencies**\<`Item`, `Arguments`, `Current`\>: `Arguments` *extends* \[infer Argument, `...(infer Rest)`\] ? [`Dependencies`](Dependencies.md)\<`Item`, `Rest`, \[`...Current`, [`Dependency`](Dependency.md)\<`Argument`\>\]\> : `Current`
 
-Defined in: src/types/dependencies.ts:29
+Defined in: [src/types/dependencies.ts:29](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/types/dependencies.ts#L29)
 
 The dependencies of a component.
 

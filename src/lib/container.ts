@@ -104,7 +104,11 @@ export interface IContainer {
 export class Container implements IContainer {
   private static instance: IContainer | undefined;
 
-  public static get current(): IContainer {
+  /**
+   * Get the default container instance.
+   * This is a singleton instance of the container.
+   */
+  public static get default(): IContainer {
     if (!Container.instance) {
       Container.instance = new Container();
     }
@@ -114,7 +118,7 @@ export class Container implements IContainer {
 
   private readonly registry: IRegistry = new Registry();
 
-  private constructor() {}
+  public constructor() {}
 
   public register<Type>(identifier: string, factory: Factory<Type>): IReferenceRegistration<Type>;
   public register<Type extends object>(component: Component<Type>, factory: Factory<Type>): IReferenceRegistration<Type>;

@@ -11,7 +11,7 @@ import type { Dependency } from '../types/dependencies';
  */
 export function Inject<Value>(dependency: Dependency<Value>): FieldDecoration<Value> {
   return <This>(_target: undefined, _context: ClassFieldDecoratorContext<This, Value>) => function replacement(this: This, value: Value): Value {
-    const container = Container.current;
+    const container = Container.default;
     if (!container) {
       throw new Error('Container not found');
     }
