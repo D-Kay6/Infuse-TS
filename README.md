@@ -1,3 +1,8 @@
+[![License: MIT](https://img.shields.io/npm/l/infuse-ts.svg)](https://github.com/D-Kay6/Infuse-TS/blob/master/LICENSE)
+[![NPM version](https://img.shields.io/npm/v/infuse-ts.svg)](https://www.npmjs.com/package/infuse-ts)
+[![NPM](https://img.shields.io/npm/dm/infuse-ts.svg)](https://www.npmjs.com/package/infuse-ts)
+[![Node version](https://img.shields.io/node/v/infuse-ts.svg)](https://img.shields.io/node/v/infuse-ts.svg)
+
 # Infuse-TS
 A pure TypeScript DI container that supports both decorators and manual registration without relying on experimental features.
 Has support for context-based scoping and collection resolution.
