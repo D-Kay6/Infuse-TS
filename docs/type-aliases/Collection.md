@@ -1,0 +1,19 @@
+[**Infuse-TS**](../README.md)
+
+***
+
+[Infuse-TS](../README.md) / Collection
+
+# Type Alias: Collection\<Type\>
+
+> **Collection**\<`Type`\>: `Type` *extends* infer Inner[] ? \[[`Identifier`](Identifier.md)\<`Inner`\>\] : `never`
+
+Defined in: src/types/dependencies.ts:14
+
+A collection of identifiers.
+
+## Type Parameters
+
+• **Type**
+
+The type of the collection.

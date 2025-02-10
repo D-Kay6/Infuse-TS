@@ -1,0 +1,26 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Infuse-TS",
+  "readme": "none",
+  "plugin": ["typedoc-plugin-markdown"],
+  "entryPoints": ["./src/index.ts"],
+  "out": "./docs",
+  "sort": ["source-order"],
+  "categorizeByGroup": false,
+  "searchCategoryBoosts": {
+    "Component": 2,
+    "Model": 1.2
+  },
+  "searchGroupBoosts": {
+    "Classes": 1.5
+  },
+  "highlightLanguages": ["typescript"],
+  "markdownItOptions": {
+    "html": true
+  },
+  "navigation": {
+    "includeCategories": true,
+    "includeGroups": true,
+    "includeFolders": true
+  }
+}
