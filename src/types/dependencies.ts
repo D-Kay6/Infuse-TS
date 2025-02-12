@@ -1,11 +1,11 @@
-import type { AbstractComponent, Component, ComponentArgs } from './component';
+import type { Component, ComponentArgs } from './component';
 import type { Factory } from './factory';
 
 /**
  * An identifier for a component.
  * @typeParam Type - The type of the component.
  */
-export type Identifier<Type = unknown> = (Type extends object ? AbstractComponent<Type> : never) | string;
+export type Identifier<Type = unknown> = { prototype: Type, name: string };
 
 /**
  * A collection of identifiers.
@@ -18,7 +18,6 @@ export type Collection<Type> = Type extends Array<infer Inner> ? [Identifier<Inn
  * @typeParam Type - The type of the dependency.
  */
 export type Dependency<Type = unknown> = Collection<Type> | Identifier<Type> | Factory<Type>;
-// export type Dependency<Type = unknown> = (Type extends unknown[] ? Collection<Type> : Identifier<Type>) | Factory<Type>;
 
 /**
  * The dependencies of a component.

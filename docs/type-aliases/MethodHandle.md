@@ -8,7 +8,7 @@
 
 > **MethodHandle**\<`Result`, `Args`\>: (...`args`) => `Result`
 
-Defined in: [src/types/decoration.ts:9](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/types/decoration.ts#L9)
+Defined in: [src/types/decoration.ts:9](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/types/decoration.ts#L9)
 
 A reference to a method.
 

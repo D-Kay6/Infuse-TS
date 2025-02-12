@@ -1,3 +1,4 @@
+import type { Identifier } from '../types/dependencies';
 import type { Provider } from './base.provider';
 
 /**
@@ -5,11 +6,11 @@ import type { Provider } from './base.provider';
  * @typeParam Type - The type of the provided value.
  */
 export class ValueProvider<Type> implements Provider<Type> {
-  public readonly name: string;
+  public readonly identifier: Identifier<Type>;
   private readonly value: Type;
 
-  constructor(name: string, value: Type) {
-    this.name = 'val:' + name;
+  constructor(identifier: Identifier<Type>, value: Type) {
+    this.identifier = identifier;
     this.value = value;
   }
 

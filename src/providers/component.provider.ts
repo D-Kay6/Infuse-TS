@@ -1,5 +1,5 @@
 import type { Container } from '../lib/container';
-import { isComponent } from '../lib/utilities';
+import { isIdentifier } from '../lib/utilities';
 import type { Component } from '../types/component';
 import type { Collection, Dependencies, Identifier } from '../types/dependencies';
 import type { Factory } from '../types/factory';
@@ -11,13 +11,13 @@ import type { Provider } from './base.provider';
  * @typeParam Class - The class of the component.
  */
 export class ComponentProvider<Type extends object, Class extends Component<Type>> implements Provider<Type> {
-  public readonly name: string;
+  public readonly identifier: Identifier<Type>;
   private readonly container: Container;
   private readonly component: Class;
   private readonly dependencies: Dependencies<Class>;
 
   constructor(container: Container, component: Class, ...dependencies: Dependencies<Class>) {
-    this.name = 'ref:' + component.name;
+    this.identifier = component;
     this.container = container;
     this.component = component;
     this.dependencies = dependencies;
@@ -28,11 +28,7 @@ export class ComponentProvider<Type extends object, Class extends Component<Type
       return this.container.resolve<Type>(dependency);
     }
 
-    if (isComponent(dependency)) {
-      return this.container.resolve<Type>(dependency);
-    }
-
-    if (typeof dependency === 'string') {
+    if (isIdentifier<Type>(dependency)) {
       return this.container.resolve<Type>(dependency);
     }
 

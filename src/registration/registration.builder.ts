@@ -1,6 +1,5 @@
 import { Scope } from '../lib/scope';
 import type { Provider } from '../providers/base.provider';
-import type { AbstractComponent } from '../types/component';
 import type { Identifier } from '../types/dependencies';
 import type { RegistrationEntry } from './registration.entry';
 import type { IRegistry } from './registration.registry';
@@ -13,16 +12,10 @@ export interface IValueRegistration<Type> {
   asSelf(): this;
 
   /**
-   * Register the item under a different name.
-   * @param name - The name to register the item under.
+   * Register the item as an instance of a parent type.
+   * @param identifier - The parent type to register the item as.
    */
-  as(name: string): this;
-
-  /**
-   * Register the item as its parent type.
-   * @param component - The parent type to register the item as.
-   */
-  as<Parent extends object, Class = Type extends Parent ? AbstractComponent<Parent> : never>(component: Class): this;
+  as<Parent extends object, Class extends Identifier<Parent> = Type extends Parent ? Identifier<Parent> : never>(identifier: Class): this;
 }
 
 export interface IReferenceRegistration<Type> extends IValueRegistration<Type> {
@@ -45,28 +38,25 @@ export interface IReferenceRegistration<Type> extends IValueRegistration<Type> {
 }
 
 export class RegistrationBuilder<Type> implements IReferenceRegistration<Type> {
-  private readonly identifier: string;
+  private readonly identifier: Identifier<Type>;
   private readonly registry: IRegistry;
-  private readonly provider: Provider<Type>;
-  private readonly aliases: string[] = []
+  private readonly provider: Provider;
+  private readonly aliases: Identifier[] = []
   private readonly registrations: RegistrationEntry[] = [];
 
   private scope: Scope = Scope.Transient;
 
-  constructor(identifier: string, registry: IRegistry, provider: Provider<Type>) {
+  constructor(identifier: Identifier<Type>, registry: IRegistry, provider: Provider<Type>) {
     this.identifier = identifier;
     this.registry = registry;
     this.provider = provider;
   }
 
   public asSelf(): this {
-    return this.as(this.identifier);
+    return this.as(this.identifier as Identifier<object>);
   }
 
-  public as(name: string): this;
-  public as<Parent extends object, Class = Type extends Parent ? AbstractComponent<Parent> : never>(component: Class): this;
-  public as<Parent>(component: Identifier<Parent>): this {
-    const identifier = typeof component === 'string' ? component : component.name;
+  public as<Parent extends object, Class extends Identifier<Parent> = Type extends Parent ? Identifier<Parent> : never>(identifier: Class): this {
     if (this.aliases.includes(identifier)) {
       return this;
     }

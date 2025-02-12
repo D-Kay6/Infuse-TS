@@ -1,6 +1,8 @@
+import type { Identifier } from '../types/dependencies';
+
 export class NotRegisteredError extends Error {
-  constructor(name: string) {
-    super(`The item "${name}" is not registered.`);
+  constructor(identifier: Identifier) {
+    super(`The item "${identifier.name}" is not registered.`);
     this.name = 'NotRegisteredError';
   }
 }

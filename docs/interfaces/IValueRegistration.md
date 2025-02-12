@@ -6,7 +6,7 @@
 
 # Interface: IValueRegistration\<Type\>
 
-Defined in: [src/registration/registration.builder.ts:8](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L8)
+Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/registration/registration.builder.ts#L7)
 
 ## Extended by
 
@@ -22,7 +22,7 @@ Defined in: [src/registration/registration.builder.ts:8](https://github.com/D-Ka
 
 > **asSelf**(): `this`
 
-Defined in: [src/registration/registration.builder.ts:13](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L13)
+Defined in: [src/registration/registration.builder.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/registration/registration.builder.ts#L12)
 
 Register the item under its own name.
 
@@ -38,48 +38,26 @@ This should always be called if not using an alias.
 
 ### as()
 
-#### Call Signature
+> **as**\<`Parent`, `Class`\>(`identifier`): `this`
 
-> **as**(`name`): `this`
+Defined in: [src/registration/registration.builder.ts:18](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/registration/registration.builder.ts#L18)
 
-Defined in: [src/registration/registration.builder.ts:19](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L19)
+Register the item as an instance of a parent type.
 
-Register the item under a different name.
-
-##### Parameters
-
-###### name
-
-`string`
-
-The name to register the item under.
-
-##### Returns
-
-`this`
-
-#### Call Signature
-
-> **as**\<`Parent`, `Class`\>(`component`): `this`
-
-Defined in: [src/registration/registration.builder.ts:25](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/registration/registration.builder.ts#L25)
-
-Register the item as its parent type.
-
-##### Type Parameters
+#### Type Parameters
 
 • **Parent** *extends* `object`
 
-• **Class** = `Type` *extends* `Parent` ? [`AbstractComponent`](../type-aliases/AbstractComponent.md)\<`Parent`\> : `never`
+• **Class** *extends* [`Identifier`](../type-aliases/Identifier.md)\<`Parent`\> = `Type` *extends* `Parent` ? [`Identifier`](../type-aliases/Identifier.md)\<`Parent`\> : `never`
 
-##### Parameters
+#### Parameters
 
-###### component
+##### identifier
 
 `Class`
 
 The parent type to register the item as.
 
-##### Returns
+#### Returns
 
 `this`

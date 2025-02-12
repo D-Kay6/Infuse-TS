@@ -6,7 +6,7 @@
 
 # Class: NotRegisteredError
 
-Defined in: [src/errors/not-registered.error.ts:1](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/errors/not-registered.error.ts#L1)
+Defined in: [src/errors/not-registered.error.ts:3](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/errors/not-registered.error.ts#L3)
 
 ## Extends
 
@@ -16,15 +16,15 @@ Defined in: [src/errors/not-registered.error.ts:1](https://github.com/D-Kay6/Inf
 
 ### new NotRegisteredError()
 
-> **new NotRegisteredError**(`name`): [`NotRegisteredError`](NotRegisteredError.md)
+> **new NotRegisteredError**(`identifier`): [`NotRegisteredError`](NotRegisteredError.md)
 
-Defined in: [src/errors/not-registered.error.ts:2](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/errors/not-registered.error.ts#L2)
+Defined in: [src/errors/not-registered.error.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/errors/not-registered.error.ts#L4)
 
 #### Parameters
 
-##### name
+##### identifier
 
-`string`
+[`Identifier`](../type-aliases/Identifier.md)
 
 #### Returns
 

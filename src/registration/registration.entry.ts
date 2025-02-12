@@ -1,27 +1,28 @@
 import { RequestContext } from '../lib/context';
 import { Scope } from '../lib/scope';
 import type { Provider } from '../providers/base.provider';
+import type { Identifier } from '../types/dependencies';
 
 export class RegistrationEntry<Type = unknown> {
   /** @internal */
   public scope: Scope;
-  public readonly identifier: string;
+  public readonly identifier: Identifier<Type>;
 
   private readonly provider: Provider<Type>;
   private lastInstance?: Type;
 
-  constructor(identifier: string, scope: Scope, provider: Provider<Type>) {
-    this.identifier = identifier + ':' + provider.name;
+  constructor(identifier: Identifier<Type>, scope: Scope, provider: Provider<Type>) {
+    this.identifier = identifier;
     this.scope = scope;
     this.provider = provider;
   }
 
   public create(): Type {
     if (this.scope === Scope.Request) {
-      let instance = RequestContext.get<Type>(this.identifier);
+      let instance = RequestContext.get<Type>(this.identifier.name);
       if (typeof instance === 'undefined') {
         instance = this.provider.provide();
-        RequestContext.set(this.identifier, instance);
+        RequestContext.set(this.identifier.name, instance);
       }
 
       return instance;

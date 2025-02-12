@@ -164,6 +164,38 @@ export class MyService {
 Container.default.registerFactory(MyService, (container) => new MyService()).instancePerDependency().asSelf();
 ```
 
+### Request Scope
+The request scope depends on the [cls-hooked](https://www.npmjs.com/package/cls-hooked) package to provide context-based scoping.
+Please refer to its documentation for any specifics.
+
+To keep it simple, anything running within a request context will have access to the same instances of dependencies registered as `Scope.Request`.
+```typescript
+import { Container, Injectable, RequestContext, Scope } from 'infuse-ts';
+
+@Injectable(Scope.Request)
+export class MyService {
+  private sum: number = 0;
+  public add(value: number) {
+    this.sum += value;
+    console.log(this.sum);
+  }
+}
+
+RequestContext.run(() => {
+  const service1 = Container.default.resolve(MyService);
+  service1.add(1); // prints: 1
+  
+  const service2 = Container.default.resolve(MyService);
+  service2.add(2); // prints: 3
+});
+
+RequestContext.run(() => {
+  const service3 = Container.default.resolve(MyService);
+  service3.add(3); // prints: 3
+});
+
+```
+
 ### Caveats
 There are a few caveats to be aware of when using Infuse-TS.
 - Circular dependencies are not supported.

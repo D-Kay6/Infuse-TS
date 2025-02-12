@@ -1,6 +1,7 @@
 import { NotRegisteredError } from '../errors/not-registered.error';
 import { Scope } from '../lib/scope';
 import type { Provider } from '../providers/base.provider';
+import type { Identifier } from '../types/dependencies';
 import { RegistrationEntry } from "./registration.entry";
 
 export interface IRegistry {
@@ -8,7 +9,7 @@ export interface IRegistry {
    * Check if the registry has a registration for the given identifier.
    * @param identifier - The identifier to check for.
    */
-  has(identifier: string): boolean;
+  has<Type>(identifier: Identifier<Type>): boolean;
 
   /**
    * Add a registration to the registry.
@@ -17,27 +18,27 @@ export interface IRegistry {
    * @param provider - The provider to register.
    * @returns The registration entry.
    */
-  add<Type>(identifier: string, scope: Scope, provider: Provider<Type>): RegistrationEntry<Type>;
+  add<Type>(identifier: Identifier<Type>, scope: Scope, provider: Provider<Type>): RegistrationEntry<Type>;
 
   /**
    * Get the first registration for the given identifier.
    * @param identifier - The identifier to get the registration for.
    * @returns The first registration entry.
    */
-  first<Type>(identifier: string): RegistrationEntry<Type>;
+  first<Type>(identifier: Identifier<Type>): RegistrationEntry<Type>;
 
   /**
    * Get all registrations for the given identifier.
    * @param identifier - The identifier to get the registrations for.
    * @returns All registration entries.
    */
-  all<Type>(identifier: string): RegistrationEntry<Type>[];
+  all<Type>(identifier: Identifier<Type>): RegistrationEntry<Type>[];
 }
 
 export class Registry implements IRegistry {
-  private readonly registrations: Map<string, RegistrationEntry[]> = new Map();
+  private readonly registrations: Map<Identifier, RegistrationEntry[]> = new Map();
 
-  public has(identifier: string): boolean {
+  public has<Type>(identifier: Identifier<Type>): boolean {
     const registrations = this.registrations.get(identifier);
     if (!registrations) {
       return false;
@@ -46,7 +47,7 @@ export class Registry implements IRegistry {
     return registrations.length > 0;
   }
 
-  public add<Type>(identifier: string, scope: Scope, provider: Provider<Type>): RegistrationEntry<Type> {
+  public add<Type>(identifier: Identifier<Type>, scope: Scope, provider: Provider<Type>): RegistrationEntry<Type> {
     if (!Object.values(Scope).includes(scope)) {
       throw new Error(`Scope ${scope} not yet supported.`);
     }
@@ -62,7 +63,7 @@ export class Registry implements IRegistry {
     return registration;
   }
 
-  public first<Type>(identifier: string): RegistrationEntry<Type> {
+  public first<Type>(identifier: Identifier<Type>): RegistrationEntry<Type> {
     const registrations = this.registrations.get(identifier);
     if (!registrations || registrations.length === 0) {
       throw new NotRegisteredError(identifier);
@@ -71,7 +72,7 @@ export class Registry implements IRegistry {
     return registrations[0] as RegistrationEntry<Type>;
   }
 
-  public all<Type>(identifier: string): RegistrationEntry<Type>[] {
+  public all<Type>(identifier: Identifier<Type>): RegistrationEntry<Type>[] {
     const registrations = this.registrations.get(identifier);
     if (!registrations || registrations.length === 0) {
       throw new NotRegisteredError(identifier);

@@ -1,11 +1,26 @@
 import type { AbstractComponent } from '../types/component';
-import type { Collection } from '../types/dependencies';
+import type { Collection, Identifier } from '../types/dependencies';
 
 const handler = {
   construct() {
     return handler;
   }
 };
+
+/**
+ * Check if the item is an identifier.
+ * @typeParam Type - The type of the identifier.
+ * @param item - The item to check.
+ * @returns `true` if the item is an identifier, `false` otherwise.
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isIdentifier = <Type>(item: any): item is Identifier<Type> => {
+  try {
+    return !!new new Proxy(item, handler)();
+  } catch (e) {
+    return false;
+  }
+}
 
 /**
  * Check if the item is a component.

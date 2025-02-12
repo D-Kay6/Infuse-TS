@@ -6,9 +6,9 @@
 
 # Type Alias: Identifier\<Type\>
 
-> **Identifier**\<`Type`\>: `Type` *extends* `object` ? [`AbstractComponent`](AbstractComponent.md)\<`Type`\> : `never` \| `string`
+> **Identifier**\<`Type`\>: `object`
 
-Defined in: [src/types/dependencies.ts:8](https://github.com/D-Kay6/Infuse-TS/blob/a8c30be6111883959cfa2434b18c1b26f87c6a92/src/types/dependencies.ts#L8)
+Defined in: [src/types/dependencies.ts:8](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/types/dependencies.ts#L8)
 
 An identifier for a component.
 
@@ -17,3 +17,13 @@ An identifier for a component.
 • **Type** = `unknown`
 
 The type of the component.
+
+## Type declaration
+
+### prototype
+
+> **prototype**: `Type`
+
+### name
+
+> **name**: `string`

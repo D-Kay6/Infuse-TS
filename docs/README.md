@@ -44,5 +44,6 @@
 - [Inject](functions/Inject.md)
 - [InjectableAs](functions/InjectableAs.md)
 - [Injectable](functions/Injectable.md)
+- [isIdentifier](functions/isIdentifier.md)
 - [isComponent](functions/isComponent.md)
 - [isCollection](functions/isCollection.md)

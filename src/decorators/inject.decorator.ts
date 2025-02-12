@@ -1,5 +1,5 @@
 import { Container } from '../lib/container';
-import { isCollection, isComponent } from '../lib/utilities';
+import { isCollection, isIdentifier } from '../lib/utilities';
 import type { FieldDecoration } from '../types/decoration';
 import type { Dependency } from '../types/dependencies';
 
@@ -20,12 +20,8 @@ export function Inject<Value>(dependency: Dependency<Value>): FieldDecoration<Va
       return container.resolve(dependency) ?? value;
     }
 
-    if (isComponent(dependency)) {
+    if (isIdentifier<Value>(dependency)) {
       return container.resolve(dependency) ?? value;
-    }
-
-    if (typeof dependency === 'string') {
-      return container.resolve<Value>(dependency) ?? value;
     }
 
     return dependency(container);
