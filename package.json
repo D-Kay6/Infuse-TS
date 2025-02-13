@@ -1,7 +1,7 @@
 {
   "name": "infuse-ts",
   "description": "A pure TypeScript DI container that supports both decorators and manual registration without relying on experimental features.",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "license": "MIT",
   "author": "Damian Kraaijeveld",
   "repository": {
@@ -59,7 +59,9 @@
   "dependencies": {
     "cls-hooked": "^4.2.2"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "typescript",
     "decorator",
