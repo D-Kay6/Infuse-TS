@@ -5,7 +5,7 @@
 
 # Infuse-TS
 A pure TypeScript DI container that supports both decorators and manual registration without relying on experimental features.
-Has support for context-based scoping and collection resolution.
+Has support for context-based scoping and aliasing.
 
 ## Install
 ```sh
@@ -162,6 +162,51 @@ export class MyService {
 }
 
 Container.default.registerFactory(MyService, (container) => new MyService()).instancePerDependency().asSelf();
+```
+
+#### Resolving
+There are two ways to resolve a dependency: using the `resolve` method or using the `resolveRequired` method.
+The `resolve` method returns `undefined` if the dependency is not registered, while the `resolveRequired` method throws an `NotRegisteredError` error if the dependency is not registered.
+
+```typescript
+import { Container } from 'infuse-ts';
+
+export abstract class BaseService {
+  public abstract doSomething();
+}
+
+export class Service1 extends BaseService {
+  public doSomething() {
+    console.log('I am Service1');
+  }
+}
+
+export class Service2 extends BaseService {
+  public doSomething() {
+    console.log('I am Service2');
+  }
+}
+
+export class Service3 extends BaseService {
+  public doSomething() {
+    console.log('I am Service3');
+  }
+}
+
+Container.default.registerComponent(Service1).instancePerDependency().as(BaseService).asSelf();
+Container.default.registerComponent(Service2).instancePerDependency().as(BaseService);
+
+// Using resolve
+const resolveOne = Container.default.resolve(Service1); // returns an instance of Service1
+const resolveFirst = Container.default.resolve(BaseService); // returns an instance of the first registered service, Service1
+const resolveMany = Container.default.resolve([BaseService]); // returns an array with instances of Service1 and Service2
+const resolveMissing = Container.default.resolve(Service3); // returns undefined
+
+// Using resolveRequired
+const requireOne = Container.default.resolveRequired(Service1); // returns an instance of Service1
+const requireFirst = Container.default.resolveRequired(BaseService); // returns an instance of the first registered service, Service1
+const requireMany = Container.default.resolveRequired([BaseService]); // returns an array with instances of Service1 and Service2
+const requireMissing = Container.default.resolveRequired(Service3); // throws an error
 ```
 
 ### Request Scope
