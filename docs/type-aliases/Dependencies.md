@@ -6,11 +6,11 @@
 
 # Type Alias: Dependencies\<Item, Arguments, Current\>
 
-> **Dependencies**\<`Item`, `Arguments`, `Current`\>: `Arguments` *extends* \[infer Argument, `...(infer Rest)`\] ? [`Dependencies`](Dependencies.md)\<`Item`, `Rest`, \[`...Current`, [`Dependency`](Dependency.md)\<`Argument`\>\]\> : `Current`
+> **Dependencies**\<`Item`, `Arguments`, `Current`\>: `Arguments` *extends* \[infer Argument, `...(infer Rest)`\] ? [`Dependencies`](Dependencies.md)\<`Item`, `Rest`, \[`...Current`, [`DependencyItem`](DependencyItem.md)\<`Argument`\> \| [`Factory`](Factory.md)\<`Argument`\>\]\> : `Current`
 
-Defined in: [src/types/dependencies.ts:28](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/types/dependencies.ts#L28)
+Defined in: [src/types/dependencies.ts:40](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/types/dependencies.ts#L40)
 
-The dependencies of a component.
+Recursively get the dependencies for a component.
 
 ## Type Parameters
 

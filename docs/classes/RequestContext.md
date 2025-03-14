@@ -6,7 +6,7 @@
 
 # Class: RequestContext
 
-Defined in: [src/lib/context.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/context.ts#L5)
+Defined in: [src/lib/context.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/context.ts#L5)
 
 ## Constructors
 
@@ -24,7 +24,7 @@ Defined in: [src/lib/context.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/1832
 
 > `static` **get**\<`T`\>(`key`): `undefined` \| `T`
 
-Defined in: [src/lib/context.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/context.ts#L12)
+Defined in: [src/lib/context.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/context.ts#L12)
 
 Try to get a value from the current context.
 
@@ -54,7 +54,7 @@ The value if it exists, otherwise undefined.
 
 > `static` **set**\<`T`\>(`key`, `value`): `void`
 
-Defined in: [src/lib/context.ts:23](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/context.ts#L23)
+Defined in: [src/lib/context.ts:23](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/context.ts#L23)
 
 Set a value in the current context.
 
@@ -92,7 +92,7 @@ If there is no context, nothing will happen.
 
 > `static` **run**(`fn`): `void`
 
-Defined in: [src/lib/context.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/context.ts#L32)
+Defined in: [src/lib/context.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/context.ts#L32)
 
 Run a function in a new context.
 
@@ -107,6 +107,32 @@ The function to run.
 #### Returns
 
 `void`
+
+#### Remarks
+
+This needs to be called in order for any context related functions to work.
+
+***
+
+### runAsync()
+
+> `static` **runAsync**(`fn`): `Promise`\<`void`\>
+
+Defined in: [src/lib/context.ts:41](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/context.ts#L41)
+
+Run an async function in a new context.
+
+#### Parameters
+
+##### fn
+
+() => `Promise`\<`void`\>
+
+The function to run.
+
+#### Returns
+
+`Promise`\<`void`\>
 
 #### Remarks
 

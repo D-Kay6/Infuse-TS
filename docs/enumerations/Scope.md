@@ -6,7 +6,7 @@
 
 # Enumeration: Scope
 
-Defined in: [src/lib/scope.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/scope.ts#L4)
+Defined in: [src/lib/scope.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/scope.ts#L4)
 
 The scope of a registration entry.
 
@@ -16,7 +16,7 @@ The scope of a registration entry.
 
 > **Transient**: `0`
 
-Defined in: [src/lib/scope.ts:8](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/scope.ts#L8)
+Defined in: [src/lib/scope.ts:8](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/scope.ts#L8)
 
 A new instance is created each time the registration is resolved.
 
@@ -26,7 +26,7 @@ A new instance is created each time the registration is resolved.
 
 > **Request**: `1`
 
-Defined in: [src/lib/scope.ts:16](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/scope.ts#L16)
+Defined in: [src/lib/scope.ts:16](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/scope.ts#L16)
 
 A single instance is created for each request.
 
@@ -41,6 +41,6 @@ If the middleware is not used, the scope will default to [Transient](Scope.md#tr
 
 > **Singleton**: `2`
 
-Defined in: [src/lib/scope.ts:21](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/scope.ts#L21)
+Defined in: [src/lib/scope.ts:21](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/scope.ts#L21)
 
 A single instance is created for the lifetime of the application.

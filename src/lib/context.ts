@@ -32,4 +32,13 @@ export class RequestContext {
   public static run(fn: () => void): void {
     return namespace.run(fn);
   }
+
+  /**
+   * Run an async function in a new context.
+   * @remarks This needs to be called in order for any context related functions to work.
+   * @param fn - The function to run.
+   */
+  public static runAsync(fn: () => Promise<void>): Promise<void> {
+    return namespace.runPromise(fn);
+  }
 }

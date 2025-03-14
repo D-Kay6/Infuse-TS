@@ -1,8 +1,7 @@
-import type { Container } from '../lib/container';
+import type { IContainer } from '../lib/container';
 import { isIdentifier } from '../lib/utilities';
 import type { Component } from '../types/component';
-import type { Collection, Dependencies, Identifier } from '../types/dependencies';
-import type { Factory } from '../types/factory';
+import type { Dependencies, Dependency, Identifier } from '../types/dependencies';
 import type { Provider } from './base.provider';
 
 /**
@@ -12,35 +11,47 @@ import type { Provider } from './base.provider';
  */
 export class ComponentProvider<Type extends object, Class extends Component<Type>> implements Provider<Type> {
   public readonly identifier: Identifier<Type>;
-  private readonly container: Container;
+  private readonly container: IContainer;
   private readonly component: Class;
   private readonly dependencies: Dependencies<Class>;
 
-  constructor(container: Container, component: Class, ...dependencies: Dependencies<Class>) {
+  constructor(container: IContainer, component: Class, ...dependencies: Dependencies<Class>) {
     this.identifier = component;
     this.container = container;
     this.component = component;
     this.dependencies = dependencies;
   }
 
-  private resolveDependency<Type>(dependency: Collection<Type> | Identifier<Type> | Factory<Type>): Type | undefined {
-    if (Array.isArray(dependency)) {
-      return this.container.resolve<Type>(dependency);
-    }
-
-    if (isIdentifier<Type>(dependency)) {
-      return this.container.resolve<Type>(dependency);
-    }
-
-    return dependency(this.container) as Type;
-  }
-
   public provide(): Type {
     const args = this.dependencies.map((dependency) => {
+      if ('optional' in dependency) {
+        return this.resolveDependency(dependency.item, dependency.optional);
+      }
+
       return this.resolveDependency(dependency);
     });
 
     return new this.component(...args);
+  }
+
+  private resolveDependency<Type>(dependency: Dependency<Type>, optional: boolean = false): Type | Type[] | undefined {
+    if (Array.isArray(dependency)) {
+      if (optional) {
+        return this.container.resolve(dependency);
+      }
+
+      return this.container.resolveRequired(dependency);
+    }
+
+    if (isIdentifier<Type>(dependency)) {
+      if (optional) {
+        return this.container.resolve(dependency);
+      }
+
+      return this.container.resolveRequired(dependency);
+    }
+
+    return dependency(this.container) as Type | Type[] | undefined;
   }
 }
 

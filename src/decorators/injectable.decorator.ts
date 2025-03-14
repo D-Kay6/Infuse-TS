@@ -24,10 +24,6 @@ export function Injectable<Class extends Component>(...args: unknown[]): ClassDe
   const dependencies = args as Dependencies<Class>;
   return (constructor: Class, _context: ClassDecoratorContext<Class>) => {
     const container = Container.default;
-    if (!container) {
-      throw new Error('Container not found');
-    }
-
     const registration = container.registerComponent(constructor, ...dependencies);
     registration.asSelf();
     switch (scope) {

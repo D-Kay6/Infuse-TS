@@ -6,7 +6,7 @@
 
 # Class: NotRegisteredError
 
-Defined in: [src/errors/not-registered.error.ts:3](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/errors/not-registered.error.ts#L3)
+Defined in: [src/errors/not-registered.error.ts:3](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/errors/not-registered.error.ts#L3)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [src/errors/not-registered.error.ts:3](https://github.com/D-Kay6/Inf
 
 > **new NotRegisteredError**(`identifier`): [`NotRegisteredError`](NotRegisteredError.md)
 
-Defined in: [src/errors/not-registered.error.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/errors/not-registered.error.ts#L4)
+Defined in: [src/errors/not-registered.error.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/errors/not-registered.error.ts#L4)
 
 #### Parameters
 
@@ -84,7 +84,7 @@ Defined in: node\_modules/@types/node/globals.d.ts:145
 
 > `optional` **cause**: `unknown`
 
-Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:24
+Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:26
 
 #### Inherited from
 

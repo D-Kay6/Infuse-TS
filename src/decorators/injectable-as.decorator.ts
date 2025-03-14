@@ -30,10 +30,6 @@ export function InjectableAs<Parent extends object, Type extends Parent, Class e
   const dependencies = args as Dependencies<Class>;
   return (constructor: Class, _context: ClassDecoratorContext<Class>) => {
     const container = Container.default;
-    if (!container) {
-      throw new Error('Container not found');
-    }
-
     const registration = container.registerComponent<Type, Class>(constructor, ...dependencies);
     registration.as(parent);
     switch (scope) {

@@ -35,15 +35,19 @@
 - [FieldDecoration](type-aliases/FieldDecoration.md)
 - [Identifier](type-aliases/Identifier.md)
 - [Collection](type-aliases/Collection.md)
-- [Dependency](type-aliases/Dependency.md)
-- [Dependencies](type-aliases/Dependencies.md)
 - [Factory](type-aliases/Factory.md)
+- [Dependency](type-aliases/Dependency.md)
+- [Optionally](type-aliases/Optionally.md)
+- [Dependencies](type-aliases/Dependencies.md)
+- [DependencyItem](type-aliases/DependencyItem.md)
+- [DependencyType](type-aliases/DependencyType.md)
 
 ## Functions
 
 - [Inject](functions/Inject.md)
 - [InjectableAs](functions/InjectableAs.md)
 - [Injectable](functions/Injectable.md)
-- [isIdentifier](functions/isIdentifier.md)
+- [Optional](functions/Optional.md)
 - [isComponent](functions/isComponent.md)
+- [isIdentifier](functions/isIdentifier.md)
 - [isCollection](functions/isCollection.md)

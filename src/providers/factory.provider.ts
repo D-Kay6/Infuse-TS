@@ -1,6 +1,5 @@
-import type { Container } from '../lib/container';
-import type { Identifier } from '../types/dependencies';
-import type { Factory } from '../types/factory';
+import type { IContainer } from '../lib/container';
+import type { Factory, Identifier } from '../types/dependencies';
 import type { Provider } from './base.provider';
 
 /**
@@ -10,9 +9,9 @@ import type { Provider } from './base.provider';
 export class FactoryProvider<Type> implements Provider<Type> {
   public readonly identifier: Identifier<Type>;
   private readonly factory: Factory<Type>;
-  private readonly container: Container;
+  private readonly container: IContainer;
 
-  constructor(identifier: Identifier<Type>, factory: Factory<Type>, container: Container) {
+  constructor(identifier: Identifier<Type>, factory: Factory<Type>, container: IContainer) {
     this.identifier = identifier;
     this.factory = factory;
     this.container = container;

@@ -2,7 +2,7 @@ import { NotRegisteredError } from '../errors/not-registered.error';
 import { Scope } from '../lib/scope';
 import type { Provider } from '../providers/base.provider';
 import type { Identifier } from '../types/dependencies';
-import { RegistrationEntry } from "./registration.entry";
+import { RegistrationEntry } from './registration.entry';
 
 export interface IRegistry {
   /**
@@ -24,6 +24,7 @@ export interface IRegistry {
    * Get the first registration for the given identifier.
    * @param identifier - The identifier to get the registration for.
    * @returns The first registration entry.
+   * @throws {@link NotRegisteredError} If no registration is found.
    */
   first<Type>(identifier: Identifier<Type>): RegistrationEntry<Type>;
 
@@ -31,6 +32,7 @@ export interface IRegistry {
    * Get all registrations for the given identifier.
    * @param identifier - The identifier to get the registrations for.
    * @returns All registration entries.
+   * @throws {@link NotRegisteredError} If no registration is found.
    */
   all<Type>(identifier: Identifier<Type>): RegistrationEntry<Type>[];
 }
@@ -58,7 +60,12 @@ export class Registry implements IRegistry {
       this.registrations.set(identifier, registrations);
     }
 
-    const registration = new RegistrationEntry(identifier, scope, provider);
+    const registration = new RegistrationEntry(identifier, scope, provider, () => {
+      const index = registrations.indexOf(registration);
+      if (index !== -1) {
+        registrations.splice(index, 1);
+      }
+    });
     registrations.push(registration);
     return registration;
   }

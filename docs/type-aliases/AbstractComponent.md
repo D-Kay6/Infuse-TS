@@ -8,7 +8,7 @@
 
 > **AbstractComponent**\<`Type`\>: (...`args`) => `Type`
 
-Defined in: [src/types/component.ts:6](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/types/component.ts#L6)
+Defined in: [src/types/component.ts:6](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/types/component.ts#L6)
 
 A component is a constructable object.
 

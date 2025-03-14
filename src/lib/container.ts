@@ -8,8 +8,7 @@ import type { IReferenceRegistration, IValueRegistration} from '../registration/
 import { Registry } from '../registration/registration.registry';
 import type { IRegistry } from '../registration/registration.registry';
 import type { Component } from '../types/component';
-import type { Collection, Dependencies, Identifier } from '../types/dependencies';
-import type { Factory } from '../types/factory';
+import type { Collection, Dependencies, Factory, Identifier } from '../types/dependencies';
 
 /**
  * A container for managing components.
@@ -59,7 +58,7 @@ export interface IContainer {
    * @returns The resolved instances if found, otherwise undefined.
    * @throws {@link InvalidDataError} If the identifier is a tuple with more than one entry.
    */
-  resolve<Type>(identifier: Collection<Type>): Type | undefined;
+  resolve<Type>(identifier: Collection<Type>): Type[] | undefined;
 
   /**
    * Resolve a registered item.
@@ -75,10 +74,10 @@ export interface IContainer {
    * @typeParam Type - The type of the resolved instances.
    * @param identifier - The identifier of the items to resolve.
    * @returns The resolved instances.
-   * @throws {@link NotRegisteredError} If no registrations are found for the identifier.
    * @throws {@link InvalidDataError} If the identifier is a tuple with more than one entry.
+   * @throws {@link NotRegisteredError} If no registrations are found for the identifier.
    */
-  resolveRequired<Type>(identifier: Collection<Type>): Type;
+  resolveRequired<Type>(identifier: Collection<Type>): Type[];
 }
 
 export class Container implements IContainer {
@@ -86,7 +85,7 @@ export class Container implements IContainer {
 
   /**
    * Get the default container instance.
-   * This is a singleton instance of the container.
+   * @remarks The default container is a singleton, created on first access.
    */
   public static get default(): IContainer {
     if (!Container.instance) {
@@ -94,6 +93,14 @@ export class Container implements IContainer {
     }
 
     return Container.instance;
+  }
+
+  /**
+   * Override the default container instance.
+   * @param container - The new default container instance.
+   */
+  public static set default(container: IContainer) {
+    Container.instance = container;
   }
 
   private readonly registry: IRegistry = new Registry();
@@ -116,29 +123,36 @@ export class Container implements IContainer {
   }
 
   public resolve<Type>(identifier: Identifier<Type>): Type | undefined;
-  public resolve<Type>(collection: Collection<Type>): Type | undefined;
-  public resolve<Type>(identifier: Identifier<Type> | Collection<Type>): Type | undefined {
-    try {
-      if (Array.isArray(identifier)) {
-        return this.resolveRequired(identifier);
+  public resolve<Type>(collection: Collection<Type>): Type[] | undefined;
+  public resolve<Type>(identifier: Identifier<Type> | Collection<Type>): Type | Type[] | undefined {
+    if (Array.isArray(identifier)) {
+      if (identifier.length !== 1) {
+        throw new InvalidDataError('Collection dependencies may only have a single entry.');
       }
 
-      return this.resolveRequired(identifier);
-    } catch (error: unknown) {
-      if (error instanceof NotRegisteredError) {
+      const subIdentifier = identifier[0];
+      if (!this.registry.has(subIdentifier)) {
         return undefined;
       }
 
-      throw error;
+      const registrations = this.registry.all(subIdentifier);
+      return registrations.map(entry => entry.create());
     }
+
+    if (!this.registry.has(identifier)) {
+      return undefined;
+    }
+
+    const registration = this.registry.first(identifier);
+    return registration.create();
   }
 
   public resolveRequired<Type>(identifier: Identifier<Type>): Type;
-  public resolveRequired<Type>(identifier: Collection<Type>): Type;
-  public resolveRequired<Type>(identifier: Identifier<Type> | Collection<Type>): Type {
+  public resolveRequired<Type>(identifier: Collection<Type>): Type[];
+  public resolveRequired<Type>(identifier: Identifier<Type> | Collection<Type>): Type | Type[] {
     if (Array.isArray(identifier)) {
       if (identifier.length !== 1) {
-        throw new InvalidDataError('Tuple dependencies may only have a single entry.');
+        throw new InvalidDataError('Collection dependencies may only have a single entry.');
       }
 
       const subIdentifier = identifier[0];
@@ -147,7 +161,7 @@ export class Container implements IContainer {
       }
 
       const registrations = this.registry.all(subIdentifier);
-      return registrations.map(entry => entry.create()) as Type;
+      return registrations.map(entry => entry.create());
     }
 
     if (!this.registry.has(identifier)) {

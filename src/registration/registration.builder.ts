@@ -50,6 +50,7 @@ export class RegistrationBuilder<Type> implements IReferenceRegistration<Type> {
     this.identifier = identifier;
     this.registry = registry;
     this.provider = provider;
+    this.registrations.push(registry.add(identifier, this.scope, provider));
   }
 
   public asSelf(): this {
@@ -59,6 +60,11 @@ export class RegistrationBuilder<Type> implements IReferenceRegistration<Type> {
   public as<Parent extends object, Class extends Identifier<Parent> = Type extends Parent ? Identifier<Parent> : never>(identifier: Class): this {
     if (this.aliases.includes(identifier)) {
       return this;
+    }
+
+    // The default registration has no aliases. If an alias is wanted, the default registration must be removed.
+    if (!this.aliases.length) {
+      this.registrations[0].destroy();
     }
 
     const entry = this.registry.add(identifier, this.scope, this.provider);

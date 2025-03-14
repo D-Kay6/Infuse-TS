@@ -5,7 +5,7 @@
 
 # Infuse-TS
 A pure TypeScript DI container that supports both decorators and manual registration without relying on experimental features.
-Has support for context-based scoping and aliasing.
+Has support for context-based scoping (primarily made to work with express) and aliasing.
 
 ## Install
 ```sh
@@ -14,6 +14,10 @@ npm install infuse-ts
 
 ## Usage
 There are two main ways you can use Infuse-TS: with or without decorators.
+Decorators use the static `default` property of the `Container` class to register dependencies.
+You can override the default container by setting the `default` property to a new instance of the container.
+Without decorators, you can either use the aforementioned `default` property or create a new instance of the `Container` class.
+New instances do not share registrations with the default container.
 
 ### With Decorators
 You can use decorators to register dependencies in a more concise way.
@@ -98,36 +102,88 @@ export class MyController {
 }
 ```
 
-### Without Decorators
-In order to register a service without decorators, you must use the `Container` class directly.
-The `Container` class has a static property called `default` that holds a singleton instance of the container, but you can also create your own instance of the container.
+#### Optional
+You can mark a dependency as optional (its type can be undefined) by wrapping it with the `Optional` function.
+This will prevent the container from throwing an error if the dependency is not registered.
 
-Each one of the registration methods returns a registration object to define how the dependency should be resolved.
-You must always call either of the `as*` methods to actually register the dependency.
-
-#### Registering Components
-A component is an alias for a constructable object. You can register a component using the `registerComponent` method.
-The `registerComponent` method takes a component and a list of the constructor arguments.
+Constructor arguments whose name ends with `?` cannot be inferred. Remove the `?` and add `| undefined` to the type.
 
 ```typescript
-import { Container } from 'infuse-ts';
+import { Injectable, Inject, Optional, Scope } from 'infuse-ts';
 
+@Injectable()
 export class MyService {
   public doSomething() {
     console.log('Hello, World!');
   }
 }
 
+@Injectable(Optional(MyService))
 export class MyController {
-  private readonly myService: MyService;
+  private readonly firstService?: MyService;
   
-  constructor(myService: MyService) {
+  @Inject(Optional(MyService))
+  private readonly myService?: MyService;
+  
+  @Inject(Optional(MyService))
+  private readonly myService: MyService | undefined;
+
+  constructor(firstService: MyService | undefined) {
+    this.firstService = firstService;
+  }
+}
+```
+
+### Without Decorators
+In order to register a service without decorators, you must use the `Container` class directly.
+Each one of the registration methods returns a registration object to define how the dependency should be resolved.
+If left unspecified, the default scope is `Scope.Transient` and the default alias is the identifier used.
+
+If you call any of the `as` methods, the default registration is removed.
+This means that, if you want to register a dependency as itself and as an interface, you need to call both `asSelf()` and `as(YourInterface)`.
+
+#### Registering Components
+A component is an alias for a constructable object. You can register a component using the `registerComponent` method.
+The `registerComponent` method takes a component and a list of the constructor arguments.
+
+Similar to the [decorator version](#optional), optional dependencies can be registered by wrapping the type with the `Optional` function.
+
+```typescript
+import { Container, Optional } from 'infuse-ts';
+
+export abstract class BaseService {
+  public abstract doSomething();
+}
+
+export class MyService implements BaseService {
+  public doSomething() {
+    console.log('Hello, World!');
+  }
+}
+
+export class MyFirstController {
+  private readonly myService: BaseService;
+  
+  constructor(myService: BaseService) {
     this.myService = myService;
   }
 }
 
-Container.default.registerComponent(MyService).instancePerDependency().asSelf();
-Container.default.registerComponent(MyController, MyService).instancePerRequest().asSelf();
+export class MySecondController {
+  private readonly myService?: BaseService;
+
+  constructor(myService: BaseService | undefined) {
+    this.myService = myService;
+  }
+}
+
+// Transient with default alias
+Container.default.registerComponent(MyService);
+// Singleton with both alias and as itself
+Container.default.registerComponent(MyService).singleInstance().as(BaseService).asSelf();
+
+Container.default.registerComponent(MyFirstController, BaseService);
+Container.default.registerComponent(MySecondController, Optional(MyService));
 ```
 
 #### Registering Instances
@@ -238,7 +294,6 @@ RequestContext.run(() => {
   const service3 = Container.default.resolve(MyService);
   service3.add(3); // prints: 3
 });
-
 ```
 
 ### Caveats

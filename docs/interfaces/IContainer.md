@@ -6,7 +6,7 @@
 
 # Interface: IContainer
 
-Defined in: [src/lib/container.ts:17](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L17)
+Defined in: [src/lib/container.ts:16](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L16)
 
 A container for managing components.
 
@@ -16,7 +16,7 @@ A container for managing components.
 
 > **register**\<`Type`\>(`identifier`, `factory`): [`IReferenceRegistration`](IReferenceRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:25](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L25)
+Defined in: [src/lib/container.ts:24](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L24)
 
 Register a factory method for a component.
 
@@ -52,7 +52,7 @@ The registration builder.
 
 > **registerInstance**\<`Type`\>(`identifier`, `instance`): [`IValueRegistration`](IValueRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:35](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L35)
+Defined in: [src/lib/container.ts:34](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L34)
 
 Register an instance of a component.
 
@@ -92,7 +92,7 @@ Instances are always registered as singletons.
 
 > **registerComponent**\<`Type`, `Class`\>(`component`, ...`dependencies`): [`IReferenceRegistration`](IReferenceRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:45](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L45)
+Defined in: [src/lib/container.ts:44](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L44)
 
 Register a component.
 
@@ -134,7 +134,7 @@ The registration builder.
 
 > **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`
 
-Defined in: [src/lib/container.ts:53](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L53)
+Defined in: [src/lib/container.ts:52](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L52)
 
 Resolve a registered item.
 
@@ -160,9 +160,9 @@ The resolved instance if found, otherwise undefined.
 
 #### Call Signature
 
-> **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`
+> **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`[]
 
-Defined in: [src/lib/container.ts:62](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L62)
+Defined in: [src/lib/container.ts:61](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L61)
 
 Resolve all registered items with the same identifier.
 
@@ -182,7 +182,7 @@ The identifier of the items to resolve.
 
 ##### Returns
 
-`undefined` \| `Type`
+`undefined` \| `Type`[]
 
 The resolved instances if found, otherwise undefined.
 
@@ -198,7 +198,7 @@ The resolved instances if found, otherwise undefined.
 
 > **resolveRequired**\<`Type`\>(`identifier`): `Type`
 
-Defined in: [src/lib/container.ts:71](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L71)
+Defined in: [src/lib/container.ts:70](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L70)
 
 Resolve a registered item.
 
@@ -228,9 +228,9 @@ The resolved instance.
 
 #### Call Signature
 
-> **resolveRequired**\<`Type`\>(`identifier`): `Type`
+> **resolveRequired**\<`Type`\>(`identifier`): `Type`[]
 
-Defined in: [src/lib/container.ts:81](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L81)
+Defined in: [src/lib/container.ts:80](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L80)
 
 Resolve all registered items with the same identifier.
 
@@ -250,14 +250,14 @@ The identifier of the items to resolve.
 
 ##### Returns
 
-`Type`
+`Type`[]
 
 The resolved instances.
 
 ##### Throws
 
-[NotRegisteredError](../classes/NotRegisteredError.md) If no registrations are found for the identifier.
+[InvalidDataError](../classes/InvalidDataError.md) If the identifier is a tuple with more than one entry.
 
 ##### Throws
 
-[InvalidDataError](../classes/InvalidDataError.md) If the identifier is a tuple with more than one entry.
+[NotRegisteredError](../classes/NotRegisteredError.md) If no registrations are found for the identifier.

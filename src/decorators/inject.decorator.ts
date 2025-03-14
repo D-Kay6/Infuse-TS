@@ -1,7 +1,7 @@
 import { Container } from '../lib/container';
 import { isCollection, isIdentifier } from '../lib/utilities';
 import type { FieldDecoration } from '../types/decoration';
-import type { Dependency } from '../types/dependencies';
+import type { DependencyItem, DependencyType, Factory } from '../types/dependencies';
 
 /**
  * Injects a dependency into a field.
@@ -9,21 +9,28 @@ import type { Dependency } from '../types/dependencies';
  * @param dependency - The dependency to inject.
  * @remarks Arrays are defined as `[Dependency]`.
  */
-export function Inject<Value>(dependency: Dependency<Value>): FieldDecoration<Value> {
-  return <This>(_target: undefined, _context: ClassFieldDecoratorContext<This, Value>) => function replacement(this: This, value: Value): Value {
-    const container = Container.default;
-    if (!container) {
-      throw new Error('Container not found');
-    }
+export function Inject<Type>(dependency: DependencyItem<Type> | Factory<Type>): FieldDecoration<Type> {
+  const optional = 'optional' in dependency ? dependency.optional : false;
+  const dependencyItem = 'optional' in dependency ? dependency.item : dependency as DependencyType<Type> | Factory<Type>;
+  return <This>(_target: undefined, _context: ClassFieldDecoratorContext<This, Type>) => {
+    return function replacement(this: This, defaultValue: Type): Type {
+      if (isCollection(dependencyItem)) {
+        if (optional || typeof defaultValue !== 'undefined') {
+          return Container.default.resolve(dependencyItem) as Type ?? defaultValue;
+        }
 
-    if (isCollection<Value>(dependency)) {
-      return container.resolve(dependency) ?? value;
-    }
+        return Container.default.resolveRequired(dependencyItem) as Type;
+      }
 
-    if (isIdentifier<Value>(dependency)) {
-      return container.resolve(dependency) ?? value;
-    }
+      if (isIdentifier<Type>(dependencyItem)) {
+        if (optional || typeof defaultValue !== 'undefined') {
+          return Container.default.resolve(dependencyItem) ?? defaultValue;
+        }
 
-    return dependency(container);
-  };
+        return Container.default.resolveRequired(dependencyItem);
+      }
+
+      return dependencyItem(Container.default) ?? defaultValue;
+    };
+  }
 }

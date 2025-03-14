@@ -5,11 +5,13 @@
     "module": "ESNext",
     "lib": ["ES2022", "ESNext.Decorators"],
     "allowJs": false,
-    "declaration": false,
+    "declaration": true,
     "declarationMap": false,
     "sourceMap": true,
     "outDir": "dist",
     "removeComments": false,
+    "stripInternal": true,
+    "emitDeclarationOnly": true,
 
     /* Strict Type-Checking Options */
     "strict": true,
@@ -27,6 +29,7 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
 
     /* Module Resolution Options */
     "moduleResolution": "bundler",
@@ -34,8 +37,14 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "esModuleInterop": false
+    "types": ["node"],
+    "esModuleInterop": true,
+    "isolatedDeclarations": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src"],
+  "exclude": ["dist", "node_modules"]
 }

@@ -6,7 +6,7 @@
 
 # Class: Container
 
-Defined in: [src/lib/container.ts:84](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L84)
+Defined in: [src/lib/container.ts:83](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L83)
 
 A container for managing components.
 
@@ -20,7 +20,7 @@ A container for managing components.
 
 > **new Container**(): [`Container`](Container.md)
 
-Defined in: [src/lib/container.ts:101](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L101)
+Defined in: [src/lib/container.ts:108](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L108)
 
 #### Returns
 
@@ -34,14 +34,37 @@ Defined in: [src/lib/container.ts:101](https://github.com/D-Kay6/Infuse-TS/blob/
 
 > **get** `static` **default**(): [`IContainer`](../interfaces/IContainer.md)
 
-Defined in: [src/lib/container.ts:91](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L91)
+Defined in: [src/lib/container.ts:90](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L90)
 
 Get the default container instance.
-This is a singleton instance of the container.
+
+##### Remarks
+
+The default container is a singleton, created on first access.
 
 ##### Returns
 
 [`IContainer`](../interfaces/IContainer.md)
+
+#### Set Signature
+
+> **set** `static` **default**(`container`): `void`
+
+Defined in: [src/lib/container.ts:102](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L102)
+
+Override the default container instance.
+
+##### Parameters
+
+###### container
+
+[`IContainer`](../interfaces/IContainer.md)
+
+The new default container instance.
+
+##### Returns
+
+`void`
 
 ## Methods
 
@@ -49,7 +72,7 @@ This is a singleton instance of the container.
 
 > **register**\<`Type`\>(`identifier`, `factory`): [`IReferenceRegistration`](../interfaces/IReferenceRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:103](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L103)
+Defined in: [src/lib/container.ts:110](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L110)
 
 Register a factory method for a component.
 
@@ -89,7 +112,7 @@ The registration builder.
 
 > **registerInstance**\<`Type`\>(`identifier`, `instance`): [`IValueRegistration`](../interfaces/IValueRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:108](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L108)
+Defined in: [src/lib/container.ts:115](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L115)
 
 Register an instance of a component.
 
@@ -133,7 +156,7 @@ Instances are always registered as singletons.
 
 > **registerComponent**\<`Type`, `Class`\>(`component`, ...`dependencies`): [`IReferenceRegistration`](../interfaces/IReferenceRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:113](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L113)
+Defined in: [src/lib/container.ts:120](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L120)
 
 Register a component.
 
@@ -179,7 +202,7 @@ The registration builder.
 
 > **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`
 
-Defined in: [src/lib/container.ts:118](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L118)
+Defined in: [src/lib/container.ts:125](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L125)
 
 Resolve a registered item.
 
@@ -209,9 +232,9 @@ The resolved instance if found, otherwise undefined.
 
 #### Call Signature
 
-> **resolve**\<`Type`\>(`collection`): `undefined` \| `Type`
+> **resolve**\<`Type`\>(`collection`): `undefined` \| `Type`[]
 
-Defined in: [src/lib/container.ts:119](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L119)
+Defined in: [src/lib/container.ts:126](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L126)
 
 Resolve all registered items with the same identifier.
 
@@ -229,7 +252,7 @@ The type of the resolved instances.
 
 ##### Returns
 
-`undefined` \| `Type`
+`undefined` \| `Type`[]
 
 The resolved instances if found, otherwise undefined.
 
@@ -249,7 +272,7 @@ The resolved instances if found, otherwise undefined.
 
 > **resolveRequired**\<`Type`\>(`identifier`): `Type`
 
-Defined in: [src/lib/container.ts:136](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L136)
+Defined in: [src/lib/container.ts:150](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L150)
 
 Resolve a registered item.
 
@@ -283,9 +306,9 @@ The resolved instance.
 
 #### Call Signature
 
-> **resolveRequired**\<`Type`\>(`identifier`): `Type`
+> **resolveRequired**\<`Type`\>(`identifier`): `Type`[]
 
-Defined in: [src/lib/container.ts:137](https://github.com/D-Kay6/Infuse-TS/blob/183255f9a4ec5e9ee4dba778a499aaf2ce7f4763/src/lib/container.ts#L137)
+Defined in: [src/lib/container.ts:151](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/container.ts#L151)
 
 Resolve all registered items with the same identifier.
 
@@ -305,17 +328,17 @@ The identifier of the items to resolve.
 
 ##### Returns
 
-`Type`
+`Type`[]
 
 The resolved instances.
 
 ##### Throws
 
-[NotRegisteredError](NotRegisteredError.md) If no registrations are found for the identifier.
+[InvalidDataError](InvalidDataError.md) If the identifier is a tuple with more than one entry.
 
 ##### Throws
 
-[InvalidDataError](InvalidDataError.md) If the identifier is a tuple with more than one entry.
+[NotRegisteredError](NotRegisteredError.md) If no registrations are found for the identifier.
 
 ##### Implementation of
 
