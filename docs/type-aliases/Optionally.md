@@ -6,24 +6,32 @@
 
 # Type Alias: Optionally\<Item\>
 
-> **Optionally**\<`Item`\>: `object`
+> **Optionally**\<`Item`\> = `object`
 
-Defined in: [src/types/dependencies.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/types/dependencies.ts#L32)
+Defined in: [src/types/dependencies.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/dependencies.ts#L32)
 
 Wraps an item to indicate it is optional.
 
 ## Type Parameters
 
-• **Item**
+### Item
+
+`Item`
 
 The type of the item.
 
-## Type declaration
+## Properties
 
 ### optional
 
 > **optional**: `true`
 
+Defined in: [src/types/dependencies.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/dependencies.ts#L32)
+
+***
+
 ### item
 
 > **item**: `Item`
+
+Defined in: [src/types/dependencies.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/dependencies.ts#L32)

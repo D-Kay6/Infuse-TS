@@ -1,11 +1,11 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import type { AbstractComponent } from '../types/component';
 import type { Collection, Identifier } from '../types/dependencies';
 
 const handler = {
   construct() {
     return handler;
-  }
+  },
 };
 
 /**
@@ -35,7 +35,7 @@ export const isIdentifier = <Type>(item: any): item is Identifier<Type> => {
   } catch (e) {
     return false;
   }
-}
+};
 
 /**
  * Check if the item is a collection.
@@ -43,6 +43,6 @@ export const isIdentifier = <Type>(item: any): item is Identifier<Type> => {
  * @param item - The item to check.
  * @returns `true` if the item is a collection, `false` otherwise.
  */
-export const isCollection = <Type>(item: any): item is Collection<Type> => {
+export const isCollection = <Type>(item: unknown): item is Collection<Type> => {
   return Array.isArray(item);
 };

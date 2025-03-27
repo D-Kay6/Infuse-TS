@@ -26,7 +26,7 @@ export function InjectableAs<Parent extends object, Type extends Parent, Class e
 export function InjectableAs<Parent extends object, Type extends Parent, Class extends Component<Type>>(parent: AbstractComponent<Parent>, scope: Scope, ...dependencies: Dependencies<Class>): ClassDecoration<Class>;
 
 export function InjectableAs<Parent extends object, Type extends Parent, Class extends Component<Type>>(parent: AbstractComponent<Parent>, ...args: unknown[]): ClassDecoration<Class> {
-  const scope = typeof args[0] === 'number' ? args.shift() as Scope : Scope.Transient;
+  const scope = typeof args[0] === 'number' ? (args.shift() as Scope) : Scope.Transient;
   const dependencies = args as Dependencies<Class>;
   return (constructor: Class, _context: ClassDecoratorContext<Class>) => {
     const container = Container.default;

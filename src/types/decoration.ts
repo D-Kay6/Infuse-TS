@@ -1,18 +1,17 @@
-import type { Component } from './component';
+import type { AbstractComponent, Component } from './component';
 
 /**
  * A reference to a method.
  * @typeParam Result - The return type of the method.
  * @typeParam Args - The argument types of the method.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type MethodHandle<Result = any, Args extends any[] = any[]> = (...args: Args) => Result;
 
 /**
  * The decoration method for a class.
  * @typeParam Class - The class type.
  */
-export type ClassDecoration<Class extends Component = Component> = (constructor: Class, context: ClassDecoratorContext<Class>) => Class;
+export type ClassDecoration<Class extends AbstractComponent = Component> = (constructor: Class, context: ClassDecoratorContext<Class>) => Class;
 
 /**
  * The decoration method for a method.
@@ -27,3 +26,24 @@ export type MethodDecoration<Target extends MethodHandle = MethodHandle> = <This
  * @remarks Only works for fields on classes.
  */
 export type FieldDecoration<Value = unknown> = <This>(target: undefined, context: ClassFieldDecoratorContext<This, Value>) => (this: This, original: Value) => Value;
+
+/**
+ * The decoration method for a getter.
+ * @typeParam Value - The type of the getter.
+ * @remarks Only works for getters on classes.
+ */
+export type GetterDecoration<Value = unknown> = <This>(target: (this: This) => Value, context: ClassGetterDecoratorContext<This, Value>) => (this: This) => Value;
+
+/**
+ * The decoration method for a setter.
+ * @typeParam Value - The type of the setter.
+ * @remarks Only works for setters on classes.
+ */
+export type SetterDecoration<Value = unknown> = <This>(target: (this: This, value: Value) => void, context: ClassSetterDecoratorContext<This, Value>) => (this: This, value: Value) => void;
+
+/**
+ * The decoration method for an accessor.
+ * @typeParam Value - The type of the accessor.
+ * @remarks Only works for accessors on classes.
+ */
+export type AccessorDecoration<Value = unknown> = <This>(target: ClassAccessorDecoratorTarget<This, Value>, context: ClassAccessorDecoratorContext<This, Value>) => ClassAccessorDecoratorResult<This, Value>;

@@ -6,19 +6,23 @@
 
 # Type Alias: MethodHandle()\<Result, Args\>
 
-> **MethodHandle**\<`Result`, `Args`\>: (...`args`) => `Result`
+> **MethodHandle**\<`Result`, `Args`\> = (...`args`) => `Result`
 
-Defined in: [src/types/decoration.ts:9](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/types/decoration.ts#L9)
+Defined in: [src/types/decoration.ts:8](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L8)
 
 A reference to a method.
 
 ## Type Parameters
 
-• **Result** = `any`
+### Result
+
+`Result` = `any`
 
 The return type of the method.
 
-• **Args** *extends* `any`[] = `any`[]
+### Args
+
+`Args` *extends* `any`[] = `any`[]
 
 The argument types of the method.
 

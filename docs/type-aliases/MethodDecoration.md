@@ -6,21 +6,25 @@
 
 # Type Alias: MethodDecoration()\<Target\>
 
-> **MethodDecoration**\<`Target`\>: \<`This`\>(`target`, `context`) => `Target`
+> **MethodDecoration**\<`Target`\> = \<`This`\>(`target`, `context`) => `Target`
 
-Defined in: [src/types/decoration.ts:22](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/types/decoration.ts#L22)
+Defined in: [src/types/decoration.ts:21](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L21)
 
 The decoration method for a method.
 
 ## Type Parameters
 
-• **Target** *extends* [`MethodHandle`](MethodHandle.md) = [`MethodHandle`](MethodHandle.md)
+### Target
+
+`Target` *extends* [`MethodHandle`](MethodHandle.md) = [`MethodHandle`](MethodHandle.md)
 
 The target method handle.
 
 ## Type Parameters
 
-• **This**
+### This
+
+`This`
 
 ## Parameters
 

@@ -10,7 +10,7 @@ export class RequestContext {
    * @returns The value if it exists, otherwise undefined.
    */
   public static get<T>(key: string): T | undefined {
-    return namespace.get(key);
+    return namespace.get(key) as T | undefined;
   }
 
   /**

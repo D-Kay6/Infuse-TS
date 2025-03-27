@@ -17,5 +17,5 @@ export { isCollection, isComponent, isIdentifier } from './lib/utilities';
 export type { IReferenceRegistration, IValueRegistration } from './registration/registration.builder';
 
 export type { AbstractComponent, Component, ComponentArgs, ComponentType } from './types/component';
-export type { ClassDecoration, FieldDecoration, MethodDecoration, MethodHandle } from './types/decoration';
+export type { AccessorDecoration, ClassDecoration, FieldDecoration, GetterDecoration, MethodDecoration, MethodHandle, SetterDecoration } from './types/decoration';
 export type { Collection, Dependencies, Dependency, DependencyItem, DependencyType, Factory, Identifier, Optionally } from './types/dependencies';

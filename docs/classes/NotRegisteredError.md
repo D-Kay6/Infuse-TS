@@ -6,7 +6,7 @@
 
 # Class: NotRegisteredError
 
-Defined in: [src/errors/not-registered.error.ts:3](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/errors/not-registered.error.ts#L3)
+Defined in: [src/errors/not-registered.error.ts:3](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/errors/not-registered.error.ts#L3)
 
 ## Extends
 
@@ -14,11 +14,11 @@ Defined in: [src/errors/not-registered.error.ts:3](https://github.com/D-Kay6/Inf
 
 ## Constructors
 
-### new NotRegisteredError()
+### Constructor
 
-> **new NotRegisteredError**(`identifier`): [`NotRegisteredError`](NotRegisteredError.md)
+> **new NotRegisteredError**(`identifier`): `NotRegisteredError`
 
-Defined in: [src/errors/not-registered.error.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/errors/not-registered.error.ts#L4)
+Defined in: [src/errors/not-registered.error.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/errors/not-registered.error.ts#L4)
 
 #### Parameters
 
@@ -28,7 +28,7 @@ Defined in: [src/errors/not-registered.error.ts:4](https://github.com/D-Kay6/Inf
 
 #### Returns
 
-[`NotRegisteredError`](NotRegisteredError.md)
+`NotRegisteredError`
 
 #### Overrides
 
@@ -130,26 +130,54 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1078
 
 ### captureStackTrace()
 
+#### Call Signature
+
 > `static` **captureStackTrace**(`targetObject`, `constructorOpt`?): `void`
 
 Defined in: node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 
-#### Parameters
+##### Parameters
 
-##### targetObject
+###### targetObject
 
 `object`
 
-##### constructorOpt?
+###### constructorOpt?
 
 `Function`
 
-#### Returns
+##### Returns
 
 `void`
 
-#### Inherited from
+##### Inherited from
+
+`Error.captureStackTrace`
+
+#### Call Signature
+
+> `static` **captureStackTrace**(`targetObject`, `constructorOpt`?): `void`
+
+Defined in: node\_modules/bun-types/globals.d.ts:1452
+
+Create .stack property on a target object
+
+##### Parameters
+
+###### targetObject
+
+`object`
+
+###### constructorOpt?
+
+`Function`
+
+##### Returns
+
+`void`
+
+##### Inherited from
 
 `Error.captureStackTrace`

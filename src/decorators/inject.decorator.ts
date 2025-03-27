@@ -11,12 +11,12 @@ import type { DependencyItem, DependencyType, Factory } from '../types/dependenc
  */
 export function Inject<Type>(dependency: DependencyItem<Type> | Factory<Type>): FieldDecoration<Type> {
   const optional = 'optional' in dependency ? dependency.optional : false;
-  const dependencyItem = 'optional' in dependency ? dependency.item : dependency as DependencyType<Type> | Factory<Type>;
+  const dependencyItem = 'optional' in dependency ? dependency.item : (dependency as DependencyType<Type> | Factory<Type>);
   return <This>(_target: undefined, _context: ClassFieldDecoratorContext<This, Type>) => {
     return function replacement(this: This, defaultValue: Type): Type {
       if (isCollection(dependencyItem)) {
         if (optional || typeof defaultValue !== 'undefined') {
-          return Container.default.resolve(dependencyItem) as Type ?? defaultValue;
+          return (Container.default.resolve(dependencyItem) as Type) ?? defaultValue;
         }
 
         return Container.default.resolveRequired(dependencyItem) as Type;
@@ -32,5 +32,5 @@ export function Inject<Type>(dependency: DependencyItem<Type> | Factory<Type>): 
 
       return dependencyItem(Container.default) ?? defaultValue;
     };
-  }
+  };
 }

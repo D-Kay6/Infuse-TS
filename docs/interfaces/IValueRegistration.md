@@ -6,7 +6,7 @@
 
 # Interface: IValueRegistration\<Type\>
 
-Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/registration/registration.builder.ts#L7)
+Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/registration/registration.builder.ts#L7)
 
 ## Extended by
 
@@ -14,7 +14,9 @@ Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Ka
 
 ## Type Parameters
 
-• **Type**
+### Type
+
+`Type`
 
 ## Methods
 
@@ -22,7 +24,7 @@ Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Ka
 
 > **asSelf**(): `this`
 
-Defined in: [src/registration/registration.builder.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/registration/registration.builder.ts#L12)
+Defined in: [src/registration/registration.builder.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/registration/registration.builder.ts#L12)
 
 Register the item under its own name.
 
@@ -40,15 +42,19 @@ This should always be called if not using an alias.
 
 > **as**\<`Parent`, `Class`\>(`identifier`): `this`
 
-Defined in: [src/registration/registration.builder.ts:18](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/registration/registration.builder.ts#L18)
+Defined in: [src/registration/registration.builder.ts:18](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/registration/registration.builder.ts#L18)
 
 Register the item as an instance of a parent type.
 
 #### Type Parameters
 
-• **Parent** *extends* `object`
+##### Parent
 
-• **Class** *extends* [`Identifier`](../type-aliases/Identifier.md)\<`Parent`\> = `Type` *extends* `Parent` ? [`Identifier`](../type-aliases/Identifier.md)\<`Parent`\> : `never`
+`Parent` *extends* `object`
+
+##### Class
+
+`Class` *extends* [`Identifier`](../type-aliases/Identifier.md)\<`Parent`\> = `Type` *extends* `Parent` ? [`Identifier`](../type-aliases/Identifier.md)\<`Parent`\> : `never`
 
 #### Parameters
 

@@ -1,8 +1,9 @@
 // eslint-disable-next-line tsdoc/syntax
-/** @type {import('ts-jest').JestConfigWithTsJest} **/
-module.exports = { // eslint-disable-line no-undef
-  testEnvironment: "node",
+/** @type {import('jest').Config} **/
+const config = {
   transform: {
-    "^.+.tsx?$": ["ts-jest",{}],
+    '^.+\\.tsx?$': ['@jgoz/jest-esbuild', { esbuild: { target: 'es2022' } }],
   },
 };
+
+export default config;

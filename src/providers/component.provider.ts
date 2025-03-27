@@ -1,7 +1,7 @@
 import type { IContainer } from '../lib/container';
 import { isIdentifier } from '../lib/utilities';
 import type { Component } from '../types/component';
-import type { Dependencies, Dependency, Identifier } from '../types/dependencies';
+import type { Dependencies, Dependency, DependencyItem, Factory, Identifier } from '../types/dependencies';
 import type { Provider } from './base.provider';
 
 /**
@@ -23,7 +23,7 @@ export class ComponentProvider<Type extends object, Class extends Component<Type
   }
 
   public provide(): Type {
-    const args = this.dependencies.map((dependency) => {
+    const args = this.dependencies.map(<SubType>(dependency: DependencyItem<SubType> | Factory<SubType>) => {
       if ('optional' in dependency) {
         return this.resolveDependency(dependency.item, dependency.optional);
       }
@@ -54,4 +54,3 @@ export class ComponentProvider<Type extends object, Class extends Component<Type
     return dependency(this.container) as Type | Type[] | undefined;
   }
 }
-

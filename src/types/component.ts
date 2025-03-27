@@ -2,14 +2,12 @@
  * A component is a constructable object.
  * @typeParam Type - The type of the component.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type AbstractComponent<Type extends object = object> = abstract new (...args: any[]) => Type;
 
 /**
  * A component is a constructable object.
  * @typeParam Type - The type of the component.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Component<Type extends object = object> = new (...args: any[]) => Type;
 
 /**

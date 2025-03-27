@@ -8,13 +8,15 @@
 
 > **isIdentifier**\<`Type`\>(`item`): `item is Identifier<Type>`
 
-Defined in: [src/lib/utilities.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/utilities.ts#L32)
+Defined in: [src/lib/utilities.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/utilities.ts#L32)
 
 Check if the item is an identifier.
 
 ## Type Parameters
 
-• **Type**
+### Type
+
+`Type`
 
 The type of the identifier.
 

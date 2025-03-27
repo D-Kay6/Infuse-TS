@@ -5,7 +5,7 @@ import type { Component, ComponentArgs } from './component';
  * An identifier for a component.
  * @typeParam Type - The type of the component.
  */
-export type Identifier<Type = unknown> = { prototype: Type, name: string };
+export type Identifier<Type = unknown> = { prototype: Type; name: string };
 
 /**
  * An identifier for a collection of components.
@@ -29,7 +29,7 @@ export type Dependency<Type = unknown> = Collection<Type> | Identifier<Type> | F
  * Wraps an item to indicate it is optional.
  * @typeParam Item - The type of the item.
  */
-export type Optionally<Item> = { optional: true, item: Item };
+export type Optionally<Item> = { optional: true; item: Item };
 
 /**
  * Recursively get the dependencies for a component.
@@ -37,8 +37,9 @@ export type Optionally<Item> = { optional: true, item: Item };
  * @typeParam Arguments - The arguments needed for construction.
  * @typeParam Current - The current dependencies.
  */
-export type Dependencies<Item extends Component, Arguments extends unknown[] = ComponentArgs<Item>, Current extends unknown[] = []> =
-  Arguments extends [infer Argument, ...infer Rest] ? Dependencies<Item, Rest, [...Current, DependencyItem<Argument> | Factory<Argument>]> : Current;
+export type Dependencies<Item extends Component, Arguments extends unknown[] = ComponentArgs<Item>, Current extends unknown[] = []> = Arguments extends [infer Argument, ...infer Rest]
+  ? Dependencies<Item, Rest, [...Current, DependencyItem<Argument> | Factory<Argument>]>
+  : Current;
 
 /**
  * A single dependency of a component.

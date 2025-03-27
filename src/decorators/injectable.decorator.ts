@@ -20,7 +20,7 @@ export function Injectable<Class extends Component>(...dependencies: Dependencie
 export function Injectable<Class extends Component>(scope: Scope, ...dependencies: Dependencies<Class>): ClassDecoration<Class>;
 
 export function Injectable<Class extends Component>(...args: unknown[]): ClassDecoration<Class> {
-  const scope = typeof args[0] === 'number' ? args.shift() as Scope : Scope.Transient;
+  const scope = typeof args[0] === 'number' ? (args.shift() as Scope) : Scope.Transient;
   const dependencies = args as Dependencies<Class>;
   return (constructor: Class, _context: ClassDecoratorContext<Class>) => {
     const container = Container.default;

@@ -8,13 +8,15 @@
 
 > **isCollection**\<`Type`\>(`item`): `item is Collection<Type>`
 
-Defined in: [src/lib/utilities.ts:46](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/lib/utilities.ts#L46)
+Defined in: [src/lib/utilities.ts:46](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/utilities.ts#L46)
 
 Check if the item is a collection.
 
 ## Type Parameters
 
-• **Type**
+### Type
+
+`Type`
 
 The type of the collection.
 
@@ -22,7 +24,7 @@ The type of the collection.
 
 ### item
 
-`any`
+`unknown`
 
 The item to check.
 

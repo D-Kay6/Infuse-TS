@@ -6,21 +6,25 @@
 
 # Type Alias: FieldDecoration()\<Value\>
 
-> **FieldDecoration**\<`Value`\>: \<`This`\>(`target`, `context`) => (`this`, `original`) => `Value`
+> **FieldDecoration**\<`Value`\> = \<`This`\>(`target`, `context`) => (`this`, `original`) => `Value`
 
-Defined in: [src/types/decoration.ts:29](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/types/decoration.ts#L29)
+Defined in: [src/types/decoration.ts:28](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L28)
 
 The decoration method for a field.
 
 ## Type Parameters
 
-• **Value** = `unknown`
+### Value
+
+`Value` = `unknown`
 
 The type of the field.
 
 ## Type Parameters
 
-• **This**
+### This
+
+`This`
 
 ## Parameters
 

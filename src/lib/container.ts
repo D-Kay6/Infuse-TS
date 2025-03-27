@@ -4,7 +4,7 @@ import { ComponentProvider } from '../providers/component.provider';
 import { FactoryProvider } from '../providers/factory.provider';
 import { ValueProvider } from '../providers/value.provider';
 import { RegistrationBuilder } from '../registration/registration.builder';
-import type { IReferenceRegistration, IValueRegistration} from '../registration/registration.builder';
+import type { IReferenceRegistration, IValueRegistration } from '../registration/registration.builder';
 import { Registry } from '../registration/registration.registry';
 import type { IRegistry } from '../registration/registration.registry';
 import type { Component } from '../types/component';
@@ -136,7 +136,7 @@ export class Container implements IContainer {
       }
 
       const registrations = this.registry.all(subIdentifier);
-      return registrations.map(entry => entry.create());
+      return registrations.map((entry) => entry.create());
     }
 
     if (!this.registry.has(identifier)) {
@@ -161,7 +161,7 @@ export class Container implements IContainer {
       }
 
       const registrations = this.registry.all(subIdentifier);
-      return registrations.map(entry => entry.create());
+      return registrations.map((entry) => entry.create());
     }
 
     if (!this.registry.has(identifier)) {

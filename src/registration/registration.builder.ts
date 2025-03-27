@@ -41,7 +41,7 @@ export class RegistrationBuilder<Type> implements IReferenceRegistration<Type> {
   private readonly identifier: Identifier<Type>;
   private readonly registry: IRegistry;
   private readonly provider: Provider;
-  private readonly aliases: Identifier[] = []
+  private readonly aliases: Identifier[] = [];
   private readonly registrations: RegistrationEntry[] = [];
 
   private scope: Scope = Scope.Transient;

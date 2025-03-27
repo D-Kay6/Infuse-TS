@@ -6,15 +6,17 @@
 
 # Type Alias: Component()\<Type\>
 
-> **Component**\<`Type`\>: (...`args`) => `Type`
+> **Component**\<`Type`\> = (...`args`) => `Type`
 
-Defined in: [src/types/component.ts:13](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/types/component.ts#L13)
+Defined in: [src/types/component.ts:11](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/component.ts#L11)
 
 A component is a constructable object.
 
 ## Type Parameters
 
-• **Type** *extends* `object` = `object`
+### Type
+
+`Type` *extends* `object` = `object`
 
 The type of the component.
 

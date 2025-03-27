@@ -37,7 +37,6 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "types": ["node"],
     "esModuleInterop": true,
     "isolatedDeclarations": true,
     "skipDefaultLibCheck": true,

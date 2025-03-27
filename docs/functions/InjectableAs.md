@@ -10,21 +10,27 @@
 
 > **InjectableAs**\<`Parent`, `Type`, `Class`\>(`parent`, ...`dependencies`): [`ClassDecoration`](../type-aliases/ClassDecoration.md)\<`Class`\>
 
-Defined in: [src/decorators/injectable-as.decorator.ts:15](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/decorators/injectable-as.decorator.ts#L15)
+Defined in: [src/decorators/injectable-as.decorator.ts:15](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/decorators/injectable-as.decorator.ts#L15)
 
 Marks a class as injectable.
 
 ### Type Parameters
 
-• **Parent** *extends* `object`
+#### Parent
+
+`Parent` *extends* `object`
 
 The type of the parent class.
 
-• **Type** *extends* `object`
+#### Type
+
+`Type` *extends* `object`
 
 The type of the class. Inferred from the decorator.
 
-• **Class** *extends* [`Component`](../type-aliases/Component.md)\<`Type`\>
+#### Class
+
+`Class` *extends* [`Component`](../type-aliases/Component.md)\<`Type`\>
 
 The constructor of the class. Inferred from the decorator.
 
@@ -50,21 +56,27 @@ The dependencies to inject into the class.
 
 > **InjectableAs**\<`Parent`, `Type`, `Class`\>(`parent`, `scope`, ...`dependencies`): [`ClassDecoration`](../type-aliases/ClassDecoration.md)\<`Class`\>
 
-Defined in: [src/decorators/injectable-as.decorator.ts:26](https://github.com/D-Kay6/Infuse-TS/blob/10bae258e5f565f29eb517fd3b4bbd7f4f6e62d8/src/decorators/injectable-as.decorator.ts#L26)
+Defined in: [src/decorators/injectable-as.decorator.ts:26](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/decorators/injectable-as.decorator.ts#L26)
 
 Marks a class as injectable.
 
 ### Type Parameters
 
-• **Parent** *extends* `object`
+#### Parent
+
+`Parent` *extends* `object`
 
 The type of the parent class.
 
-• **Type** *extends* `object`
+#### Type
+
+`Type` *extends* `object`
 
 The type of the class. Inferred from the decorator.
 
-• **Class** *extends* [`Component`](../type-aliases/Component.md)\<`Type`\>
+#### Class
+
+`Class` *extends* [`Component`](../type-aliases/Component.md)\<`Type`\>
 
 The constructor of the class. Inferred from the decorator.
 
