@@ -6,7 +6,7 @@
 
 # Interface: IValueRegistration\<Type\>
 
-Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/registration/registration.builder.ts#L7)
+Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/registration/registration.builder.ts#L7)
 
 ## Extended by
 
@@ -24,7 +24,7 @@ Defined in: [src/registration/registration.builder.ts:7](https://github.com/D-Ka
 
 > **asSelf**(): `this`
 
-Defined in: [src/registration/registration.builder.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/registration/registration.builder.ts#L12)
+Defined in: [src/registration/registration.builder.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/registration/registration.builder.ts#L12)
 
 Register the item under its own name.
 
@@ -42,7 +42,7 @@ This should always be called if not using an alias.
 
 > **as**\<`Parent`, `Class`\>(`identifier`): `this`
 
-Defined in: [src/registration/registration.builder.ts:18](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/registration/registration.builder.ts#L18)
+Defined in: [src/registration/registration.builder.ts:18](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/registration/registration.builder.ts#L18)
 
 Register the item as an instance of a parent type.
 

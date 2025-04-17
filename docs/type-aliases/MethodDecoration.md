@@ -4,41 +4,21 @@
 
 [Infuse-TS](../README.md) / MethodDecoration
 
-# Type Alias: MethodDecoration()\<Target\>
+# Type Alias: MethodDecoration\<Method\>
 
-> **MethodDecoration**\<`Target`\> = \<`This`\>(`target`, `context`) => `Target`
+> **MethodDecoration**\<`Method`\> = \[`Method`\] *extends* \[`never`\] ? \<`This`, `Target`\>(`target`, `context`) => `Target` \| `void` : \<`This`, `Target`\>(`target`, `context`) => `Target` \| `void` & \<`This`\>(`target`, `context`) => `Method` \| `void`
 
-Defined in: [src/types/decoration.ts:21](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L21)
+Defined in: [src/types/decoration.ts:23](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/decoration.ts#L23)
 
 The decoration method for a method.
 
 ## Type Parameters
 
-### Target
+### Method
 
-`Target` *extends* [`MethodHandle`](MethodHandle.md) = [`MethodHandle`](MethodHandle.md)
+`Method` *extends* [`MethodHandle`](MethodHandle.md) = `never`
 
 The target method handle.
-
-## Type Parameters
-
-### This
-
-`This`
-
-## Parameters
-
-### target
-
-`Target`
-
-### context
-
-`ClassMethodDecoratorContext`\<`This`, `Target`\>
-
-## Returns
-
-`Target`
 
 ## Remarks
 

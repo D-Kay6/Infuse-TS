@@ -6,7 +6,7 @@
 
 # Class: RequestContext
 
-Defined in: [src/lib/context.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/context.ts#L5)
+Defined in: [src/lib/context.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/context.ts#L5)
 
 ## Constructors
 
@@ -24,7 +24,7 @@ Defined in: [src/lib/context.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/1387
 
 > `static` **get**\<`T`\>(`key`): `undefined` \| `T`
 
-Defined in: [src/lib/context.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/context.ts#L12)
+Defined in: [src/lib/context.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/context.ts#L12)
 
 Try to get a value from the current context.
 
@@ -56,7 +56,7 @@ The value if it exists, otherwise undefined.
 
 > `static` **set**\<`T`\>(`key`, `value`): `void`
 
-Defined in: [src/lib/context.ts:23](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/context.ts#L23)
+Defined in: [src/lib/context.ts:23](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/context.ts#L23)
 
 Set a value in the current context.
 
@@ -96,7 +96,7 @@ If there is no context, nothing will happen.
 
 > `static` **run**(`fn`): `void`
 
-Defined in: [src/lib/context.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/context.ts#L32)
+Defined in: [src/lib/context.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/context.ts#L32)
 
 Run a function in a new context.
 
@@ -122,7 +122,7 @@ This needs to be called in order for any context related functions to work.
 
 > `static` **runAsync**(`fn`): `Promise`\<`void`\>
 
-Defined in: [src/lib/context.ts:41](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/context.ts#L41)
+Defined in: [src/lib/context.ts:41](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/context.ts#L41)
 
 Run an async function in a new context.
 

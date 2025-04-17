@@ -20,16 +20,34 @@ export type Collection<Type> = [Identifier<Type>];
 export type Factory<Type> = (container: IContainer) => Type;
 
 /**
- * Shorthand for the different types of dependencies.
- * @typeParam Type - The type referenced by the dependency.
+ * A type that can be resolved to a component.
+ * @typeParam Type - The type of the resolved component.
  */
-export type Dependency<Type = unknown> = Collection<Type> | Identifier<Type> | Factory<Type>;
+export type Resolvable<Type> = Type extends Array<infer Inner> ? Collection<Inner> : Identifier<Type>;
+
+/**
+ * A factory for lazy loading a component.
+ * @typeParam Type - The type of the resolved component.
+ */
+export type Func<Type> = () => Type;
+
+/**
+ * Represents a dependency that can be resolved to a component.
+ * @typeParam Type - The type of the resolvable item.
+ */
+export type Dependency<Type> = { item: Resolvable<Type> };
 
 /**
  * Wraps an item to indicate it is optional.
- * @typeParam Item - The type of the item.
+ * @typeParam Type - The type of the resolvable item.
  */
-export type Optionally<Item> = { optional: true; item: Item };
+export type OptionalDependency<Type> = Dependency<Type> & { optional: true };
+
+/**
+ * Wraps an item to indicate it can be lazily resolved.
+ * @typeParam Type - The type of the resolvable item.
+ */
+export type LazyDependency<Type> = Dependency<Type> & { lazy: true };
 
 /**
  * Recursively get the dependencies for a component.
@@ -38,17 +56,18 @@ export type Optionally<Item> = { optional: true; item: Item };
  * @typeParam Current - The current dependencies.
  */
 export type Dependencies<Item extends Component, Arguments extends unknown[] = ComponentArgs<Item>, Current extends unknown[] = []> = Arguments extends [infer Argument, ...infer Rest]
-  ? Dependencies<Item, Rest, [...Current, DependencyItem<Argument> | Factory<Argument>]>
+  ? Dependencies<Item, Rest, [...Current, DependencyItem<Argument>]>
   : Current;
 
 /**
  * A single dependency of a component.
- * @typeParam Type - The type of the dependency item.
+ * @typeParam Type - The type to find the dependency form for.
  */
-export type DependencyItem<Type> = undefined extends Type ? Optionally<DependencyType<NonNullable<Type>>> : DependencyType<Type>;
-
-/**
- * Differentiates between a collection and a component dependency.
- * @typeParam Type - The type to find the dependency for.
- */
-export type DependencyType<Type> = Type extends Array<infer Inner> ? Collection<Inner> : Identifier<Type>;
+export type DependencyItem<Type> =
+  Type extends Func<infer Inner>
+    ? undefined extends Inner
+      ? LazyDependency<Inner> & OptionalDependency<Inner>
+      : LazyDependency<Inner> & { optional?: never }
+    : undefined extends Type
+      ? (OptionalDependency<Type> & { lazy?: never }) | Factory<Type | undefined>
+      : Resolvable<Type> | Factory<Type>;

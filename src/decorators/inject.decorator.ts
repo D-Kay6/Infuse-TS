@@ -1,7 +1,7 @@
 import { Container } from '../lib/container';
-import { isCollection, isIdentifier } from '../lib/utilities';
+import { isFactory, isIdentifier, isLazy, isOptional } from '../lib/utilities';
 import type { FieldDecoration } from '../types/decoration';
-import type { DependencyItem, DependencyType, Factory } from '../types/dependencies';
+import type { Dependency, DependencyItem, Func } from '../types/dependencies';
 
 /**
  * Injects a dependency into a field.
@@ -9,28 +9,35 @@ import type { DependencyItem, DependencyType, Factory } from '../types/dependenc
  * @param dependency - The dependency to inject.
  * @remarks Arrays are defined as `[Dependency]`.
  */
-export function Inject<Type>(dependency: DependencyItem<Type> | Factory<Type>): FieldDecoration<Type> {
-  const optional = 'optional' in dependency ? dependency.optional : false;
-  const dependencyItem = 'optional' in dependency ? dependency.item : (dependency as DependencyType<Type> | Factory<Type>);
-  return <This>(_target: undefined, _context: ClassFieldDecoratorContext<This, Type>) => {
-    return function replacement(this: This, defaultValue: Type): Type {
-      if (isCollection(dependencyItem)) {
-        if (optional || typeof defaultValue !== 'undefined') {
-          return (Container.default.resolve(dependencyItem) as Type) ?? defaultValue;
-        }
-
-        return Container.default.resolveRequired(dependencyItem) as Type;
+export function Inject<Type>(dependency: NoInfer<DependencyItem<Type>>): FieldDecoration<Type> {
+  type Target = Type extends Func<infer Inner> ? Inner : Type;
+  return (() =>
+    function replacement(): Type | Func<Target | undefined> | undefined {
+      if (Array.isArray(dependency)) {
+        return Container.default.resolveRequired(dependency) as Type;
       }
 
-      if (isIdentifier<Type>(dependencyItem)) {
-        if (optional || typeof defaultValue !== 'undefined') {
-          return Container.default.resolve(dependencyItem) ?? defaultValue;
-        }
-
-        return Container.default.resolveRequired(dependencyItem);
+      if (isIdentifier<Type>(dependency)) {
+        return Container.default.resolveRequired(dependency);
       }
 
-      return dependencyItem(Container.default) ?? defaultValue;
-    };
-  };
+      if (isFactory(dependency)) {
+        return dependency(Container.default);
+      }
+
+      if (isLazy(dependency)) {
+        const lazyDependency = dependency as Dependency<Target>;
+        if (isOptional(lazyDependency)) {
+          return () => Container.default.resolve<Target>(lazyDependency.item);
+        } else {
+          return () => Container.default.resolveRequired(lazyDependency.item);
+        }
+      }
+
+      if (isOptional(dependency)) {
+        return Container.default.resolve<Type>(dependency.item);
+      } else {
+        return Container.default.resolveRequired(dependency.item);
+      }
+    }) as FieldDecoration<Type>;
 }

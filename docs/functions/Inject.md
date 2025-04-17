@@ -8,7 +8,7 @@
 
 > **Inject**\<`Type`\>(`dependency`): [`FieldDecoration`](../type-aliases/FieldDecoration.md)\<`Type`\>
 
-Defined in: [src/decorators/inject.decorator.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/decorators/inject.decorator.ts#L12)
+Defined in: [src/decorators/inject.decorator.ts:12](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/decorators/inject.decorator.ts#L12)
 
 Injects a dependency into a field.
 
@@ -22,9 +22,9 @@ Injects a dependency into a field.
 
 ### dependency
 
-The dependency to inject.
+`NoInfer`\<[`DependencyItem`](../type-aliases/DependencyItem.md)\<`Type`\>\>
 
-[`DependencyItem`](../type-aliases/DependencyItem.md)\<`Type`\> | [`Factory`](../type-aliases/Factory.md)\<`Type`\>
+The dependency to inject.
 
 ## Returns
 

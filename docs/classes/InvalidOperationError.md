@@ -6,7 +6,7 @@
 
 # Class: InvalidOperationError
 
-Defined in: [src/errors/invalid-operation.error.ts:1](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/errors/invalid-operation.error.ts#L1)
+Defined in: [src/errors/invalid-operation.error.ts:1](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/errors/invalid-operation.error.ts#L1)
 
 ## Extends
 
@@ -16,9 +16,9 @@ Defined in: [src/errors/invalid-operation.error.ts:1](https://github.com/D-Kay6/
 
 ### Constructor
 
-> **new InvalidOperationError**(`message`?): `InvalidOperationError`
+> **new InvalidOperationError**(`message?`): `InvalidOperationError`
 
-Defined in: [src/errors/invalid-operation.error.ts:2](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/errors/invalid-operation.error.ts#L2)
+Defined in: [src/errors/invalid-operation.error.ts:2](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/errors/invalid-operation.error.ts#L2)
 
 #### Parameters
 
@@ -40,7 +40,7 @@ Defined in: [src/errors/invalid-operation.error.ts:2](https://github.com/D-Kay6/
 
 > `static` `optional` **prepareStackTrace**: (`err`, `stackTraces`) => `any`
 
-Defined in: node\_modules/@types/node/globals.d.ts:143
+Defined in: node\_modules/bun-types/globals.d.ts:962
 
 Optional override for formatting stack traces
 
@@ -72,7 +72,9 @@ https://v8.dev/docs/stack-trace-api#customizing-stack-traces
 
 > `static` **stackTraceLimit**: `number`
 
-Defined in: node\_modules/@types/node/globals.d.ts:145
+Defined in: node\_modules/bun-types/globals.d.ts:967
+
+The maximum number of stack frames to capture.
 
 #### Inherited from
 
@@ -85,6 +87,8 @@ Defined in: node\_modules/@types/node/globals.d.ts:145
 > `optional` **cause**: `unknown`
 
 Defined in: node\_modules/typescript/lib/lib.es2022.error.d.ts:26
+
+The cause of the error.
 
 #### Inherited from
 
@@ -128,13 +132,41 @@ Defined in: node\_modules/typescript/lib/lib.es5.d.ts:1078
 
 ## Methods
 
+### isError()
+
+> `static` **isError**(`value`): `value is Error`
+
+Defined in: node\_modules/bun-types/globals.d.ts:950
+
+Check if a value is an instance of Error
+
+#### Parameters
+
+##### value
+
+`unknown`
+
+The value to check
+
+#### Returns
+
+`value is Error`
+
+True if the value is an instance of Error, false otherwise
+
+#### Inherited from
+
+`Error.isError`
+
+***
+
 ### captureStackTrace()
 
 #### Call Signature
 
-> `static` **captureStackTrace**(`targetObject`, `constructorOpt`?): `void`
+> `static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
 
-Defined in: node\_modules/@types/node/globals.d.ts:136
+Defined in: node\_modules/bun-types/globals.d.ts:955
 
 Create .stack property on a target object
 
@@ -158,9 +190,9 @@ Create .stack property on a target object
 
 #### Call Signature
 
-> `static` **captureStackTrace**(`targetObject`, `constructorOpt`?): `void`
+> `static` **captureStackTrace**(`targetObject`, `constructorOpt?`): `void`
 
-Defined in: node\_modules/bun-types/globals.d.ts:1452
+Defined in: node\_modules/@types/node/globals.d.ts:136
 
 Create .stack property on a target object
 

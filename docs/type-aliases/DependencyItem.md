@@ -6,9 +6,9 @@
 
 # Type Alias: DependencyItem\<Type\>
 
-> **DependencyItem**\<`Type`\> = `undefined` *extends* `Type` ? [`Optionally`](Optionally.md)\<[`DependencyType`](DependencyType.md)\<`NonNullable`\<`Type`\>\>\> : [`DependencyType`](DependencyType.md)\<`Type`\>
+> **DependencyItem**\<`Type`\> = `Type` *extends* [`Func`](Func.md)\<infer Inner\> ? `undefined` *extends* `Inner` ? [`LazyDependency`](LazyDependency.md)\<`Inner`\> & [`OptionalDependency`](OptionalDependency.md)\<`Inner`\> : [`LazyDependency`](LazyDependency.md)\<`Inner`\> & `object` : `undefined` *extends* `Type` ? [`OptionalDependency`](OptionalDependency.md)\<`Type`\> & `object` \| [`Factory`](Factory.md)\<`Type` \| `undefined`\> : [`Resolvable`](Resolvable.md)\<`Type`\> \| [`Factory`](Factory.md)\<`Type`\>
 
-Defined in: [src/types/dependencies.ts:48](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/dependencies.ts#L48)
+Defined in: [src/types/dependencies.ts:66](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/dependencies.ts#L66)
 
 A single dependency of a component.
 
@@ -18,4 +18,4 @@ A single dependency of a component.
 
 `Type`
 
-The type of the dependency item.
+The type to find the dependency form for.

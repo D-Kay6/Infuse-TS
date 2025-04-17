@@ -4,55 +4,21 @@
 
 [Infuse-TS](../README.md) / SetterDecoration
 
-# Type Alias: SetterDecoration()\<Value\>
+# Type Alias: SetterDecoration\<Setter\>
 
-> **SetterDecoration**\<`Value`\> = \<`This`\>(`target`, `context`) => (`this`, `value`) => `void`
+> **SetterDecoration**\<`Setter`\> = \[`Setter`\] *extends* \[`never`\] ? \<`This`, `Value`\>(`target`, `context`) => (`this`, `value`) => `void` \| `void` : \<`This`, `Value`\>(`target`, `context`) => (`this`, `value`) => `void` \| `void` & \<`This`\>(`target`, `context`) => (`this`, `value`) => `void` \| `void`
 
-Defined in: [src/types/decoration.ts:42](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L42)
+Defined in: [src/types/decoration.ts:52](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/decoration.ts#L52)
 
 The decoration method for a setter.
 
 ## Type Parameters
 
-### Value
+### Setter
 
-`Value` = `unknown`
+`Setter` = `never`
 
 The type of the setter.
-
-## Type Parameters
-
-### This
-
-`This`
-
-## Parameters
-
-### target
-
-(`this`, `value`) => `void`
-
-### context
-
-`ClassSetterDecoratorContext`\<`This`, `Value`\>
-
-## Returns
-
-`Function`
-
-### Parameters
-
-#### this
-
-`This`
-
-#### value
-
-`Value`
-
-### Returns
-
-`void`
 
 ## Remarks
 

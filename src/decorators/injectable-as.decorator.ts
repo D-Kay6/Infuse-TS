@@ -28,9 +28,9 @@ export function InjectableAs<Parent extends object, Type extends Parent, Class e
 export function InjectableAs<Parent extends object, Type extends Parent, Class extends Component<Type>>(parent: AbstractComponent<Parent>, ...args: unknown[]): ClassDecoration<Class> {
   const scope = typeof args[0] === 'number' ? (args.shift() as Scope) : Scope.Transient;
   const dependencies = args as Dependencies<Class>;
-  return (constructor: Class, _context: ClassDecoratorContext<Class>) => {
+  return ((constructor: Class): void => {
     const container = Container.default;
-    const registration = container.registerComponent<Type, Class>(constructor, ...dependencies);
+    const registration = container.registerComponent(constructor, ...dependencies);
     registration.as(parent);
     switch (scope) {
       case Scope.Transient:
@@ -43,7 +43,5 @@ export function InjectableAs<Parent extends object, Type extends Parent, Class e
         registration.singleInstance();
         break;
     }
-
-    return constructor;
-  };
+  }) as ClassDecoration<Class>;
 }

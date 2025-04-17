@@ -8,7 +8,7 @@
 
 > **isComponent**\<`Type`\>(`item`): `item is AbstractComponent<Type>`
 
-Defined in: [src/lib/utilities.ts:18](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/utilities.ts#L18)
+Defined in: [src/lib/utilities.ts:18](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/utilities.ts#L18)
 
 Check if the item is a component.
 

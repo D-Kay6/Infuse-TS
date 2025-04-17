@@ -22,7 +22,7 @@ export function Injectable<Class extends Component>(scope: Scope, ...dependencie
 export function Injectable<Class extends Component>(...args: unknown[]): ClassDecoration<Class> {
   const scope = typeof args[0] === 'number' ? (args.shift() as Scope) : Scope.Transient;
   const dependencies = args as Dependencies<Class>;
-  return (constructor: Class, _context: ClassDecoratorContext<Class>) => {
+  return ((constructor: Class): void => {
     const container = Container.default;
     const registration = container.registerComponent(constructor, ...dependencies);
     registration.asSelf();
@@ -37,7 +37,5 @@ export function Injectable<Class extends Component>(...args: unknown[]): ClassDe
         registration.singleInstance();
         break;
     }
-
-    return constructor;
-  };
+  }) as ClassDecoration<Class>;
 }

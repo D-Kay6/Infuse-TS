@@ -1,7 +1,7 @@
 import type { IContainer } from '../lib/container';
-import { isIdentifier } from '../lib/utilities';
+import { isDependency, isIdentifier, isLazy, isOptional } from '../lib/utilities';
 import type { Component } from '../types/component';
-import type { Dependencies, Dependency, DependencyItem, Factory, Identifier } from '../types/dependencies';
+import type { Collection, Dependencies, Dependency, Factory, Identifier, Resolvable } from '../types/dependencies';
 import type { Provider } from './base.provider';
 
 /**
@@ -23,9 +23,13 @@ export class ComponentProvider<Type extends object, Class extends Component<Type
   }
 
   public provide(): Type {
-    const args = this.dependencies.map(<SubType>(dependency: DependencyItem<SubType> | Factory<SubType>) => {
-      if ('optional' in dependency) {
-        return this.resolveDependency(dependency.item, dependency.optional);
+    const args = this.dependencies.map(<SubType>(dependency: Dependency<SubType> | Resolvable<SubType> | Factory<SubType>) => {
+      if (isDependency(dependency)) {
+        if (isLazy(dependency)) {
+          return () => this.resolveDependency(dependency.item, isOptional(dependency));
+        }
+
+        return this.resolveDependency(dependency.item, isOptional(dependency));
       }
 
       return this.resolveDependency(dependency);
@@ -34,7 +38,7 @@ export class ComponentProvider<Type extends object, Class extends Component<Type
     return new this.component(...args);
   }
 
-  private resolveDependency<Type>(dependency: Dependency<Type>, optional: boolean = false): Type | Type[] | undefined {
+  private resolveDependency<Type>(dependency: Identifier<Type> | Collection<Type> | Factory<Type>, optional: boolean = false): Type | Type[] | undefined {
     if (Array.isArray(dependency)) {
       if (optional) {
         return this.container.resolve(dependency);

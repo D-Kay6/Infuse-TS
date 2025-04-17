@@ -8,11 +8,9 @@
 
 ## Call Signature
 
-> **Optional**\<`Type`\>(`identifier`): [`Optionally`](../type-aliases/Optionally.md)\<[`Identifier`](../type-aliases/Identifier.md)\<`Type`\>\>
+> **Optional**\<`Type`, `Dependency`\>(`dependency`): `Dependency` & [`Dependency`](../type-aliases/Dependency.md)\<`Type`[]\> & `object`
 
-Defined in: [src/lib/tokens.ts:9](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/tokens.ts#L9)
-
-A wrapper for a dependency that may be optional.
+Defined in: [src/lib/tokens.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L4)
 
 ### Type Parameters
 
@@ -20,29 +18,25 @@ A wrapper for a dependency that may be optional.
 
 `Type`
 
-The type of the dependency.
+#### Dependency
+
+`Dependency` *extends* `object`
 
 ### Parameters
 
-#### identifier
+#### dependency
 
-[`Identifier`](../type-aliases/Identifier.md)\<`Type`\>
-
-The identifier of the dependency.
+`Dependency`
 
 ### Returns
 
-[`Optionally`](../type-aliases/Optionally.md)\<[`Identifier`](../type-aliases/Identifier.md)\<`Type`\>\>
-
-An object with the dependency and optional flag.
+`Dependency` & [`Dependency`](../type-aliases/Dependency.md)\<`Type`[]\> & `object`
 
 ## Call Signature
 
-> **Optional**\<`Type`\>(`collection`): [`Optionally`](../type-aliases/Optionally.md)\<[`Collection`](../type-aliases/Collection.md)\<`Type`\>\>
+> **Optional**\<`Type`, `Dependency`\>(`dependency`): `Dependency` & [`Dependency`](../type-aliases/Dependency.md)\<`Type`\> & `object`
 
-Defined in: [src/lib/tokens.ts:16](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/tokens.ts#L16)
-
-A wrapper for a dependency that may be optional.
+Defined in: [src/lib/tokens.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L5)
 
 ### Type Parameters
 
@@ -50,18 +44,60 @@ A wrapper for a dependency that may be optional.
 
 `Type`
 
-The type of the dependency.
+#### Dependency
+
+`Dependency` *extends* `object`
 
 ### Parameters
 
-#### collection
+#### dependency
 
-[`Collection`](../type-aliases/Collection.md)\<`Type`\>
-
-The collection identifier of the dependency.
+`Dependency`
 
 ### Returns
 
-[`Optionally`](../type-aliases/Optionally.md)\<[`Collection`](../type-aliases/Collection.md)\<`Type`\>\>
+`Dependency` & [`Dependency`](../type-aliases/Dependency.md)\<`Type`\> & `object`
 
-An object with the dependency and optional flag.
+## Call Signature
+
+> **Optional**\<`Type`\>(`dependency`): [`OptionalDependency`](../type-aliases/OptionalDependency.md)\<`Type`[]\>
+
+Defined in: [src/lib/tokens.ts:6](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L6)
+
+### Type Parameters
+
+#### Type
+
+`Type`
+
+### Parameters
+
+#### dependency
+
+[`Collection`](../type-aliases/Collection.md)\<`Type`\>
+
+### Returns
+
+[`OptionalDependency`](../type-aliases/OptionalDependency.md)\<`Type`[]\>
+
+## Call Signature
+
+> **Optional**\<`Type`\>(`dependency`): [`OptionalDependency`](../type-aliases/OptionalDependency.md)\<`Type`\>
+
+Defined in: [src/lib/tokens.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L7)
+
+### Type Parameters
+
+#### Type
+
+`Type`
+
+### Parameters
+
+#### dependency
+
+[`Identifier`](../type-aliases/Identifier.md)\<`Type`\>
+
+### Returns
+
+[`OptionalDependency`](../type-aliases/OptionalDependency.md)\<`Type`\>

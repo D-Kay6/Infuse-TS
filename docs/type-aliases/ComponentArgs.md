@@ -4,11 +4,11 @@
 
 [Infuse-TS](../README.md) / ComponentArgs
 
-# Type Alias: ComponentArgs\<Class\>
+# Type Alias: ComponentArgs\<Class, Params\>
 
-> **ComponentArgs**\<`Class`\> = `Class` *extends* (...`args`) => `unknown` ? `Args` : `never`
+> **ComponentArgs**\<`Class`, `Params`\> = [`RequireOptional`](RequireOptional.md)\<`Required`\<`Params`\>, [`OptionalProperties`](OptionalProperties.md)\<`Params`\>\>
 
-Defined in: [src/types/component.ts:23](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/component.ts#L23)
+Defined in: [src/types/component.ts:25](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/component.ts#L25)
 
 Get the arguments needed for construction.
 
@@ -19,3 +19,7 @@ Get the arguments needed for construction.
 `Class` *extends* [`Component`](Component.md)
 
 The component type.
+
+### Params
+
+`Params` = `ConstructorParameters`\<`Class`\>

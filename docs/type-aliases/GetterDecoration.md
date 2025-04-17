@@ -4,51 +4,21 @@
 
 [Infuse-TS](../README.md) / GetterDecoration
 
-# Type Alias: GetterDecoration()\<Value\>
+# Type Alias: GetterDecoration\<Getter\>
 
-> **GetterDecoration**\<`Value`\> = \<`This`\>(`target`, `context`) => (`this`) => `Value`
+> **GetterDecoration**\<`Getter`\> = \[`Getter`\] *extends* \[`never`\] ? \<`This`, `Value`\>(`target`, `context`) => (`this`) => `Value` \| `void` : \<`This`, `Value`\>(`target`, `context`) => (`this`) => `Value` \| `void` & \<`This`\>(`target`, `context`) => (`this`) => `Getter` \| `void`
 
-Defined in: [src/types/decoration.ts:35](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L35)
+Defined in: [src/types/decoration.ts:42](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/decoration.ts#L42)
 
 The decoration method for a getter.
 
 ## Type Parameters
 
-### Value
+### Getter
 
-`Value` = `unknown`
+`Getter` = `unknown`
 
 The type of the getter.
-
-## Type Parameters
-
-### This
-
-`This`
-
-## Parameters
-
-### target
-
-(`this`) => `Value`
-
-### context
-
-`ClassGetterDecoratorContext`\<`This`, `Value`\>
-
-## Returns
-
-`Function`
-
-### Parameters
-
-#### this
-
-`This`
-
-### Returns
-
-`Value`
 
 ## Remarks
 

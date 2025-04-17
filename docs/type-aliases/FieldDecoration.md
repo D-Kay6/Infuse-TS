@@ -4,55 +4,21 @@
 
 [Infuse-TS](../README.md) / FieldDecoration
 
-# Type Alias: FieldDecoration()\<Value\>
+# Type Alias: FieldDecoration\<Field\>
 
-> **FieldDecoration**\<`Value`\> = \<`This`\>(`target`, `context`) => (`this`, `original`) => `Value`
+> **FieldDecoration**\<`Field`\> = \[`Field`\] *extends* \[`never`\] ? \<`This`, `Value`\>(`target`, `context`) => (`this`, `defaultValue`) => `Value` \| `void` : \<`This`, `Value`\>(`target`, `context`) => (`this`, `defaultValue`) => `Value` \| `void` & \<`This`\>(`target`, `context`) => (`this`, `defaultValue`) => `Field` \| `void`
 
-Defined in: [src/types/decoration.ts:28](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L28)
+Defined in: [src/types/decoration.ts:32](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/decoration.ts#L32)
 
 The decoration method for a field.
 
 ## Type Parameters
 
-### Value
+### Field
 
-`Value` = `unknown`
+`Field` = `unknown`
 
 The type of the field.
-
-## Type Parameters
-
-### This
-
-`This`
-
-## Parameters
-
-### target
-
-`undefined`
-
-### context
-
-`ClassFieldDecoratorContext`\<`This`, `Value`\>
-
-## Returns
-
-`Function`
-
-### Parameters
-
-#### this
-
-`This`
-
-#### original
-
-`Value`
-
-### Returns
-
-`Value`
 
 ## Remarks
 

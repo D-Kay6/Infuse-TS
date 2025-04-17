@@ -8,7 +8,7 @@
 
 > **ComponentType**\<`Class`\> = `Class` *extends* [`Component`](Component.md)\<infer Type\> ? `Type` : `never`
 
-Defined in: [src/types/component.ts:17](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/component.ts#L17)
+Defined in: [src/types/component.ts:19](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/component.ts#L19)
 
 Get the type a component is constructing.
 

@@ -4,41 +4,21 @@
 
 [Infuse-TS](../README.md) / AccessorDecoration
 
-# Type Alias: AccessorDecoration()\<Value\>
+# Type Alias: AccessorDecoration\<Accessor\>
 
-> **AccessorDecoration**\<`Value`\> = \<`This`\>(`target`, `context`) => `ClassAccessorDecoratorResult`\<`This`, `Value`\>
+> **AccessorDecoration**\<`Accessor`\> = \[`Accessor`\] *extends* \[`never`\] ? \<`This`, `Value`\>(`target`, `context`) => `ClassAccessorDecoratorResult`\<`This`, `Value`\> \| `void` : \<`This`, `Value`\>(`target`, `context`) => `ClassAccessorDecoratorResult`\<`This`, `Value`\> \| `void` & \<`This`\>(`target`, `context`) => `ClassAccessorDecoratorResult`\<`This`, `Accessor`\> \| `void`
 
-Defined in: [src/types/decoration.ts:49](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/decoration.ts#L49)
+Defined in: [src/types/decoration.ts:62](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/decoration.ts#L62)
 
 The decoration method for an accessor.
 
 ## Type Parameters
 
-### Value
+### Accessor
 
-`Value` = `unknown`
+`Accessor` = `never`
 
 The type of the accessor.
-
-## Type Parameters
-
-### This
-
-`This`
-
-## Parameters
-
-### target
-
-`ClassAccessorDecoratorTarget`\<`This`, `Value`\>
-
-### context
-
-`ClassAccessorDecoratorContext`\<`This`, `Value`\>
-
-## Returns
-
-`ClassAccessorDecoratorResult`\<`This`, `Value`\>
 
 ## Remarks
 

@@ -7,8 +7,8 @@ import { RegistrationBuilder } from '../registration/registration.builder';
 import type { IReferenceRegistration, IValueRegistration } from '../registration/registration.builder';
 import { Registry } from '../registration/registration.registry';
 import type { IRegistry } from '../registration/registration.registry';
-import type { Component } from '../types/component';
-import type { Collection, Dependencies, Factory, Identifier } from '../types/dependencies';
+import type { Component, ComponentType } from '../types/component';
+import type { Collection, Dependencies, Factory, Identifier, Resolvable } from '../types/dependencies';
 
 /**
  * A container for managing components.
@@ -35,13 +35,20 @@ export interface IContainer {
 
   /**
    * Register a component.
-   * @typeParam Type - The type of the component instance.
    * @typeParam Class - The constructor of the component.
    * @param component - The component to register.
    * @param dependencies - The dependencies to inject into the component constructor.
    * @returns The registration builder.
    */
-  registerComponent<Type extends object, Class extends Component<Type>>(component: Class, ...dependencies: Dependencies<Class>): IReferenceRegistration<Type>;
+  registerComponent<Class extends Component>(component: Class, ...dependencies: Dependencies<Class>): IReferenceRegistration<ComponentType<Class>>;
+
+  /**
+   * Resolve one registered item, or multiple items if the identifier is a collection.
+   * @typeParam Type - The type of the resolved instance.
+   * @param identifier - The identifier of the item to resolve.
+   * @returns The resolved instance(s) if found, otherwise undefined.
+   */
+  resolve<Type>(identifier: Resolvable<Type>): Type | undefined;
 
   /**
    * Resolve a registered item.
@@ -59,6 +66,15 @@ export interface IContainer {
    * @throws {@link InvalidDataError} If the identifier is a tuple with more than one entry.
    */
   resolve<Type>(identifier: Collection<Type>): Type[] | undefined;
+
+  /**
+   * Resolve one registered item, or multiple items if the identifier is a collection.
+   * @typeParam Type - The type of the resolved instance.
+   * @param identifier - The identifier of the item to resolve.
+   * @returns The resolved instance(s).
+   * @throws {@link NotRegisteredError} If no registrations are found for the identifier.
+   */
+  resolveRequired<Type>(identifier: Resolvable<Type>): Type;
 
   /**
    * Resolve a registered item.
@@ -117,7 +133,7 @@ export class Container implements IContainer {
     return new RegistrationBuilder(identifier, this.registry, provider);
   }
 
-  public registerComponent<Type extends object, Class extends Component<Type>>(component: Class, ...dependencies: Dependencies<Class>): IReferenceRegistration<Type> {
+  public registerComponent<Class extends Component>(component: Class, ...dependencies: Dependencies<Class>): IReferenceRegistration<ComponentType<Class>> {
     const provider = new ComponentProvider(this, component, ...dependencies);
     return new RegistrationBuilder(component, this.registry, provider);
   }

@@ -6,7 +6,7 @@
 
 # Interface: IContainer
 
-Defined in: [src/lib/container.ts:16](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L16)
+Defined in: [src/lib/container.ts:16](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L16)
 
 A container for managing components.
 
@@ -16,7 +16,7 @@ A container for managing components.
 
 > **register**\<`Type`\>(`identifier`, `factory`): [`IReferenceRegistration`](IReferenceRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:24](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L24)
+Defined in: [src/lib/container.ts:24](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L24)
 
 Register a factory method for a component.
 
@@ -54,7 +54,7 @@ The registration builder.
 
 > **registerInstance**\<`Type`\>(`identifier`, `instance`): [`IValueRegistration`](IValueRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:34](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L34)
+Defined in: [src/lib/container.ts:34](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L34)
 
 Register an instance of a component.
 
@@ -94,23 +94,17 @@ Instances are always registered as singletons.
 
 ### registerComponent()
 
-> **registerComponent**\<`Type`, `Class`\>(`component`, ...`dependencies`): [`IReferenceRegistration`](IReferenceRegistration.md)\<`Type`\>
+> **registerComponent**\<`Class`\>(`component`, ...`dependencies`): [`IReferenceRegistration`](IReferenceRegistration.md)\<[`ComponentType`](../type-aliases/ComponentType.md)\<`Class`\>\>
 
-Defined in: [src/lib/container.ts:44](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L44)
+Defined in: [src/lib/container.ts:43](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L43)
 
 Register a component.
 
 #### Type Parameters
 
-##### Type
-
-`Type` *extends* `object`
-
-The type of the component instance.
-
 ##### Class
 
-`Class` *extends* [`Component`](../type-aliases/Component.md)\<`Type`\>
+`Class` *extends* [`Component`](../type-aliases/Component.md)
 
 The constructor of the component.
 
@@ -130,7 +124,7 @@ The dependencies to inject into the component constructor.
 
 #### Returns
 
-[`IReferenceRegistration`](IReferenceRegistration.md)\<`Type`\>
+[`IReferenceRegistration`](IReferenceRegistration.md)\<[`ComponentType`](../type-aliases/ComponentType.md)\<`Class`\>\>
 
 The registration builder.
 
@@ -142,7 +136,37 @@ The registration builder.
 
 > **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`
 
-Defined in: [src/lib/container.ts:52](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L52)
+Defined in: [src/lib/container.ts:51](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L51)
+
+Resolve one registered item, or multiple items if the identifier is a collection.
+
+##### Type Parameters
+
+###### Type
+
+`Type`
+
+The type of the resolved instance.
+
+##### Parameters
+
+###### identifier
+
+[`Resolvable`](../type-aliases/Resolvable.md)\<`Type`\>
+
+The identifier of the item to resolve.
+
+##### Returns
+
+`undefined` \| `Type`
+
+The resolved instance(s) if found, otherwise undefined.
+
+#### Call Signature
+
+> **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`
+
+Defined in: [src/lib/container.ts:59](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L59)
 
 Resolve a registered item.
 
@@ -172,7 +196,7 @@ The resolved instance if found, otherwise undefined.
 
 > **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`[]
 
-Defined in: [src/lib/container.ts:61](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L61)
+Defined in: [src/lib/container.ts:68](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L68)
 
 Resolve all registered items with the same identifier.
 
@@ -210,7 +234,41 @@ The resolved instances if found, otherwise undefined.
 
 > **resolveRequired**\<`Type`\>(`identifier`): `Type`
 
-Defined in: [src/lib/container.ts:70](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L70)
+Defined in: [src/lib/container.ts:77](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L77)
+
+Resolve one registered item, or multiple items if the identifier is a collection.
+
+##### Type Parameters
+
+###### Type
+
+`Type`
+
+The type of the resolved instance.
+
+##### Parameters
+
+###### identifier
+
+[`Resolvable`](../type-aliases/Resolvable.md)\<`Type`\>
+
+The identifier of the item to resolve.
+
+##### Returns
+
+`Type`
+
+The resolved instance(s).
+
+##### Throws
+
+[NotRegisteredError](../classes/NotRegisteredError.md) If no registrations are found for the identifier.
+
+#### Call Signature
+
+> **resolveRequired**\<`Type`\>(`identifier`): `Type`
+
+Defined in: [src/lib/container.ts:86](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L86)
 
 Resolve a registered item.
 
@@ -244,7 +302,7 @@ The resolved instance.
 
 > **resolveRequired**\<`Type`\>(`identifier`): `Type`[]
 
-Defined in: [src/lib/container.ts:80](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/lib/container.ts#L80)
+Defined in: [src/lib/container.ts:96](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L96)
 
 Resolve all registered items with the same identifier.
 

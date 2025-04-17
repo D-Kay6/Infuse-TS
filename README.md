@@ -105,8 +105,9 @@ export class MyController {
 #### Optional
 You can mark a dependency as optional (its type can be undefined) by wrapping it with the `Optional` function.
 This will prevent the container from throwing an error if the dependency is not registered.
+The `Optional` function can be used in conjunction with the `Lazy` function to create a lazy-loaded optional dependency (see below).
 
-Constructor arguments whose name ends with `?` cannot be inferred. Remove the `?` and add `| undefined` to the type.
+Constructor arguments that are optional should either have their name end with a `?` or have `| undefined` in their type.
 
 ```typescript
 import { Injectable, Inject, Optional, Scope } from 'infuse-ts';
@@ -123,15 +124,51 @@ export class MyController {
   private readonly firstService?: MyService;
   
   @Inject(Optional(MyService))
-  private readonly myService?: MyService;
+  private readonly secondaryService?: MyService;
   
   @Inject(Optional(MyService))
-  private readonly myService: MyService | undefined;
+  private readonly alternativeService: MyService | undefined;
 
-  constructor(firstService: MyService | undefined) {
+  constructor(firstService?: MyService) {
     this.firstService = firstService;
   }
 }
+```
+
+#### Lazy
+Lazy loading is a way to defer the resolution of a dependency until it is actually needed.
+To use lazy loading, you can wrap the dependency with the `Lazy` function.
+You can also use the `Lazy` function in conjunction with the `Optional` function to create a lazy-loaded optional dependency.
+The order of these functions does not matter, as they are both just wrappers around the type.
+
+Note that lazy dependencies will never be optional, as a lazy dependency will always be resolved to a function that returns the dependency.
+That dependency can be `undefined`, but the function itself will never be `undefined`.
+
+```typescript
+import { Func, Injectable, Lazy, Optional } from 'infuse-ts';
+
+@Injectable()
+export class MyService {
+  public doSomething() {
+    console.log('Hello, World!');
+  }
+}
+
+@Injectable(Lazy(Optional(MyService)))
+export class MyController {
+  private readonly myLazyService: Func<MyService | undefined>;
+
+  constructor(myLazyService: Func<MyService | undefined>) {
+    this.myLazyService = myLazyService;
+  }
+  
+  public doSomething() {
+    // The service is not resolved until this point
+    const lazyService = this.myLazyService();
+    lazyService()?.doSomething();
+  }
+}
+
 ```
 
 ### Without Decorators
@@ -146,10 +183,11 @@ This means that, if you want to register a dependency as itself and as an interf
 A component is an alias for a constructable object. You can register a component using the `registerComponent` method.
 The `registerComponent` method takes a component and a list of the constructor arguments.
 
-Similar to the [decorator version](#optional), optional dependencies can be registered by wrapping the type with the `Optional` function.
+Similar to the [decorator version](#optional), optional dependencies can be registered by wrapping the type with the `Optional` function,
+and lazy dependencies can be registered by wrapping the type with the `Lazy` function.
 
 ```typescript
-import { Container, Optional } from 'infuse-ts';
+import { Container, Func, Lazy, Optional } from 'infuse-ts';
 
 export abstract class BaseService {
   public abstract doSomething();
@@ -162,9 +200,9 @@ export class MyService implements BaseService {
 }
 
 export class MyFirstController {
-  private readonly myService: BaseService;
+  private readonly myService: Func<BaseService>;
   
-  constructor(myService: BaseService) {
+  constructor(myService: Func<BaseService>) {
     this.myService = myService;
   }
 }
@@ -172,7 +210,7 @@ export class MyFirstController {
 export class MySecondController {
   private readonly myService?: BaseService;
 
-  constructor(myService: BaseService | undefined) {
+  constructor(myService?: BaseService) {
     this.myService = myService;
   }
 }
@@ -182,7 +220,7 @@ Container.default.registerComponent(MyService);
 // Singleton with both alias and as itself
 Container.default.registerComponent(MyService).singleInstance().as(BaseService).asSelf();
 
-Container.default.registerComponent(MyFirstController, BaseService);
+Container.default.registerComponent(MyFirstController, Lazy(BaseService));
 Container.default.registerComponent(MySecondController, Optional(MyService));
 ```
 
@@ -299,7 +337,8 @@ RequestContext.run(() => {
 ### Caveats
 There are a few caveats to be aware of when using Infuse-TS.
 - Circular dependencies are not supported.
-- Modules need to be imported for the decorators to work. This is a limitation of TypeScript.
+- For decorators to run, the module must be imported at least once.
+  This is a limitation of the TypeScript compiler and not a bug in Infuse-TS.
 
 ## Background
 I'm originally a C# developer, and I've been using DI containers for many years. When I started working with TypeScript halfway through 2024, I initially had to learn how to work with the type system and the language itself.

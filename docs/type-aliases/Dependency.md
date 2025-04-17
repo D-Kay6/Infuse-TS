@@ -6,16 +6,24 @@
 
 # Type Alias: Dependency\<Type\>
 
-> **Dependency**\<`Type`\> = [`Collection`](Collection.md)\<`Type`\> \| [`Identifier`](Identifier.md)\<`Type`\> \| [`Factory`](Factory.md)\<`Type`\>
+> **Dependency**\<`Type`\> = `object`
 
-Defined in: [src/types/dependencies.ts:26](https://github.com/D-Kay6/Infuse-TS/blob/1387e3f339bea91025c5da407e0b7dff28feffb5/src/types/dependencies.ts#L26)
+Defined in: [src/types/dependencies.ts:38](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/dependencies.ts#L38)
 
-Shorthand for the different types of dependencies.
+Represents a dependency that can be resolved to a component.
 
 ## Type Parameters
 
 ### Type
 
-`Type` = `unknown`
+`Type`
 
-The type referenced by the dependency.
+The type of the resolvable item.
+
+## Properties
+
+### item
+
+> **item**: [`Resolvable`](Resolvable.md)\<`Type`\>
+
+Defined in: [src/types/dependencies.ts:38](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/dependencies.ts#L38)

@@ -1,3 +1,5 @@
+import type { OptionalProperties, RequireOptional } from './utility.ts';
+
 /**
  * A component is a constructable object.
  * @typeParam Type - The type of the component.
@@ -20,4 +22,4 @@ export type ComponentType<Class extends Component> = Class extends Component<inf
  * Get the arguments needed for construction.
  * @typeParam Class - The component type.
  */
-export type ComponentArgs<Class extends Component> = Class extends new (...args: infer Args) => unknown ? Args : never;
+export type ComponentArgs<Class extends Component, Params = ConstructorParameters<Class>> = RequireOptional<Required<Params>, OptionalProperties<Params>>;

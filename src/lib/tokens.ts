@@ -1,22 +1,34 @@
-import type { Collection, Dependency, Identifier, Optionally } from '../types/dependencies.ts';
+import type { Collection, Dependency, Identifier, LazyDependency, OptionalDependency, Resolvable } from '../types/dependencies.ts';
+import { isDependency } from './utilities.ts';
 
-/**
- * A wrapper for a dependency that may be optional.
- * @typeParam Type - The type of the dependency.
- * @param identifier - The identifier of the dependency.
- * @returns An object with the dependency and optional flag.
- */
-export function Optional<Type>(identifier: Identifier<Type>): Optionally<Identifier<Type>>;
-/**
- * A wrapper for a dependency that may be optional.
- * @typeParam Type - The type of the dependency.
- * @param collection - The collection identifier of the dependency.
- * @returns An object with the dependency and optional flag.
- */
-export function Optional<Type>(collection: Collection<Type>): Optionally<Collection<Type>>;
-export function Optional<Type>(dependency: Dependency<Type>): Optionally<Dependency<Type>> {
-  return {
-    item: dependency,
-    optional: true,
-  };
+export function Optional<Type, Dependency extends { item: Collection<Type> }>(dependency: Dependency): Dependency & OptionalDependency<Type[]>;
+export function Optional<Type, Dependency extends { item: Identifier<Type> }>(dependency: Dependency): Dependency & OptionalDependency<Type>;
+export function Optional<Type>(dependency: Collection<Type>): OptionalDependency<Type[]>;
+export function Optional<Type>(dependency: Identifier<Type>): OptionalDependency<Type>;
+export function Optional<Type>(dependency: Resolvable<Type> | Dependency<Type>): OptionalDependency<Type> {
+  return isDependency(dependency)
+    ? {
+        ...dependency,
+        optional: true,
+      }
+    : {
+        item: dependency,
+        optional: true,
+      };
+}
+
+export function Lazy<Type, Dependency extends { item: Collection<Type> }>(dependency: Dependency): Dependency & LazyDependency<Type[]>;
+export function Lazy<Type, Dependency extends { item: Identifier<Type> }>(dependency: Dependency): Dependency & LazyDependency<Type>;
+export function Lazy<Type>(dependency: Collection<Type>): LazyDependency<Type[]>;
+export function Lazy<Type>(dependency: Identifier<Type>): LazyDependency<Type>;
+export function Lazy<Type>(dependency: Resolvable<Type> | Dependency<Type>): LazyDependency<Type> {
+  return isDependency(dependency)
+    ? {
+        ...dependency,
+        lazy: true,
+      }
+    : {
+        item: dependency,
+        lazy: true,
+      };
 }
