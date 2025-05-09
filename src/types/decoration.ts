@@ -5,7 +5,7 @@ import type { AbstractComponent, Component } from './component';
  * @typeParam Result - The return type of the method.
  * @typeParam Args - The argument types of the method.
  */
-export type MethodHandle<Result = any, Args extends any[] = any[]> = (...args: Args) => Result;
+export type MethodHandle<Result = any, Args extends unknown[] = any[]> = (...args: Args) => Result;
 
 /**
  * The decoration method for a class.
@@ -29,7 +29,7 @@ export type MethodDecoration<Method extends MethodHandle = never> = [Method] ext
  * @typeParam Field - The type of the field.
  * @remarks Only works for fields on classes.
  */
-export type FieldDecoration<Field = unknown> = [Field] extends [never]
+export type FieldDecoration<Field = never> = [Field] extends [never]
   ? <This, Value>(target: undefined, context: ClassFieldDecoratorContext<This, Value>) => ((this: This, defaultValue: Value) => Value) | void
   : (<This, Value extends Field>(target: undefined, context: ClassFieldDecoratorContext<This, Value>) => ((this: This, defaultValue: Value) => Value) | void) &
       (<This>(target: undefined, context: ClassFieldDecoratorContext<This, Field>) => ((this: This, defaultValue: Field) => Field) | void);
@@ -39,7 +39,7 @@ export type FieldDecoration<Field = unknown> = [Field] extends [never]
  * @typeParam Getter - The type of the getter.
  * @remarks Only works for getters on classes.
  */
-export type GetterDecoration<Getter = unknown> = [Getter] extends [never]
+export type GetterDecoration<Getter = never> = [Getter] extends [never]
   ? <This, Value>(target: (this: This) => Value, context: ClassGetterDecoratorContext<This, Value>) => ((this: This) => Value) | void
   : (<This, Value extends Getter>(target: (this: This) => Value, context: ClassGetterDecoratorContext<This, Value>) => ((this: This) => Value) | void) &
       (<This>(target: (this: This) => Getter, context: ClassGetterDecoratorContext<This, Getter>) => ((this: This) => Getter) | void);

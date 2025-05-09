@@ -1,5 +1,5 @@
 import type { IContainer } from '../lib/container';
-import type { Factory, Identifier } from '../types/dependencies';
+import type { Factory } from '../types/dependencies';
 import type { Provider } from './base.provider';
 
 /**
@@ -7,14 +7,12 @@ import type { Provider } from './base.provider';
  * @typeParam Type - The type of the provided value.
  */
 export class FactoryProvider<Type> implements Provider<Type> {
-  public readonly identifier: Identifier<Type>;
-  private readonly factory: Factory<Type>;
   private readonly container: IContainer;
+  private readonly factory: Factory<Type>;
 
-  constructor(identifier: Identifier<Type>, factory: Factory<Type>, container: IContainer) {
-    this.identifier = identifier;
-    this.factory = factory;
+  constructor(container: IContainer, factory: Factory<Type>) {
     this.container = container;
+    this.factory = factory;
   }
 
   public provide(): Type {

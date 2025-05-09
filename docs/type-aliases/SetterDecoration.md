@@ -8,7 +8,7 @@
 
 > **SetterDecoration**\<`Setter`\> = \[`Setter`\] *extends* \[`never`\] ? \<`This`, `Value`\>(`target`, `context`) => (`this`, `value`) => `void` \| `void` : \<`This`, `Value`\>(`target`, `context`) => (`this`, `value`) => `void` \| `void` & \<`This`\>(`target`, `context`) => (`this`, `value`) => `void` \| `void`
 
-Defined in: [src/types/decoration.ts:52](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/decoration.ts#L52)
+Defined in: [src/types/decoration.ts:52](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/types/decoration.ts#L52)
 
 The decoration method for a setter.
 

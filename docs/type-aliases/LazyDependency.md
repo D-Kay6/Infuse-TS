@@ -8,7 +8,7 @@
 
 > **LazyDependency**\<`Type`\> = [`Dependency`](Dependency.md)\<`Type`\> & `object`
 
-Defined in: [src/types/dependencies.ts:50](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/types/dependencies.ts#L50)
+Defined in: [src/types/dependencies.ts:50](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/types/dependencies.ts#L50)
 
 Wraps an item to indicate it can be lazily resolved.
 

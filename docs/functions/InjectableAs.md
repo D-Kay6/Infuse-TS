@@ -10,7 +10,7 @@
 
 > **InjectableAs**\<`Parent`, `Type`, `Class`\>(`parent`, ...`dependencies`): [`ClassDecoration`](../type-aliases/ClassDecoration.md)\<`Class`\>
 
-Defined in: [src/decorators/injectable-as.decorator.ts:15](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/decorators/injectable-as.decorator.ts#L15)
+Defined in: [src/decorators/injectable-as.decorator.ts:15](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/decorators/injectable-as.decorator.ts#L15)
 
 Marks a class as injectable.
 
@@ -56,7 +56,7 @@ The dependencies to inject into the class.
 
 > **InjectableAs**\<`Parent`, `Type`, `Class`\>(`parent`, `scope`, ...`dependencies`): [`ClassDecoration`](../type-aliases/ClassDecoration.md)\<`Class`\>
 
-Defined in: [src/decorators/injectable-as.decorator.ts:26](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/decorators/injectable-as.decorator.ts#L26)
+Defined in: [src/decorators/injectable-as.decorator.ts:26](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/decorators/injectable-as.decorator.ts#L26)
 
 Marks a class as injectable.
 

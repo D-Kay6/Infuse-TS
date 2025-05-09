@@ -63,11 +63,10 @@ export type Dependencies<Item extends Component, Arguments extends unknown[] = C
  * A single dependency of a component.
  * @typeParam Type - The type to find the dependency form for.
  */
-export type DependencyItem<Type> =
-  Type extends Func<infer Inner>
-    ? undefined extends Inner
-      ? LazyDependency<Inner> & OptionalDependency<Inner>
-      : LazyDependency<Inner> & { optional?: never }
-    : undefined extends Type
-      ? (OptionalDependency<Type> & { lazy?: never }) | Factory<Type | undefined>
-      : Resolvable<Type> | Factory<Type>;
+export type DependencyItem<Type> = [Type] extends [Func<infer Inner>]
+  ? undefined extends Inner
+    ? LazyDependency<Inner> & OptionalDependency<Inner>
+    : LazyDependency<Inner> & { optional?: never }
+  : undefined extends Type
+    ? (OptionalDependency<Type> & { lazy?: never }) | Factory<Type | undefined>
+    : Resolvable<Type> | Factory<Type>;

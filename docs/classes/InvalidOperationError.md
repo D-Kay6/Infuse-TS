@@ -6,7 +6,7 @@
 
 # Class: InvalidOperationError
 
-Defined in: [src/errors/invalid-operation.error.ts:1](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/errors/invalid-operation.error.ts#L1)
+Defined in: [src/errors/invalid-operation.error.ts:1](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/errors/invalid-operation.error.ts#L1)
 
 ## Extends
 
@@ -18,7 +18,7 @@ Defined in: [src/errors/invalid-operation.error.ts:1](https://github.com/D-Kay6/
 
 > **new InvalidOperationError**(`message?`): `InvalidOperationError`
 
-Defined in: [src/errors/invalid-operation.error.ts:2](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/errors/invalid-operation.error.ts#L2)
+Defined in: [src/errors/invalid-operation.error.ts:2](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/errors/invalid-operation.error.ts#L2)
 
 #### Parameters
 

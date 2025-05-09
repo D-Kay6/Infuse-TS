@@ -10,13 +10,11 @@ import type { Provider } from './base.provider';
  * @typeParam Class - The class of the component.
  */
 export class ComponentProvider<Type extends object, Class extends Component<Type>> implements Provider<Type> {
-  public readonly identifier: Identifier<Type>;
   private readonly container: IContainer;
   private readonly component: Class;
   private readonly dependencies: Dependencies<Class>;
 
   constructor(container: IContainer, component: Class, ...dependencies: Dependencies<Class>) {
-    this.identifier = component;
     this.container = container;
     this.component = component;
     this.dependencies = dependencies;

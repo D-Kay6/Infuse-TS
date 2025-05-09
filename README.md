@@ -335,10 +335,11 @@ RequestContext.run(() => {
 ```
 
 ### Caveats
-There are a few caveats to be aware of when using Infuse-TS.
-- Circular dependencies are not supported.
-- For decorators to run, the module must be imported at least once.
-  This is a limitation of the TypeScript compiler and not a bug in Infuse-TS.
+There are a few problems with the current implementation that I am aware of:
+- Circular dependencies are not (yet) detected and will cause issues when resolving.
+- Decorators only run when the class is defined.
+  If a class is not imported, transpiling will likely not include the class in the output, and the decorators will not run.
+  This is a limitation of transpilation and not the library itself.
 
 ## Background
 I'm originally a C# developer, and I've been using DI containers for many years. When I started working with TypeScript halfway through 2024, I initially had to learn how to work with the type system and the language itself.

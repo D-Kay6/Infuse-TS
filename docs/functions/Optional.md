@@ -10,7 +10,7 @@
 
 > **Optional**\<`Type`, `Dependency`\>(`dependency`): `Dependency` & [`Dependency`](../type-aliases/Dependency.md)\<`Type`[]\> & `object`
 
-Defined in: [src/lib/tokens.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L4)
+Defined in: [src/lib/tokens.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/tokens.ts#L4)
 
 ### Type Parameters
 
@@ -36,7 +36,7 @@ Defined in: [src/lib/tokens.ts:4](https://github.com/D-Kay6/Infuse-TS/blob/62073
 
 > **Optional**\<`Type`, `Dependency`\>(`dependency`): `Dependency` & [`Dependency`](../type-aliases/Dependency.md)\<`Type`\> & `object`
 
-Defined in: [src/lib/tokens.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L5)
+Defined in: [src/lib/tokens.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/tokens.ts#L5)
 
 ### Type Parameters
 
@@ -62,7 +62,7 @@ Defined in: [src/lib/tokens.ts:5](https://github.com/D-Kay6/Infuse-TS/blob/62073
 
 > **Optional**\<`Type`\>(`dependency`): [`OptionalDependency`](../type-aliases/OptionalDependency.md)\<`Type`[]\>
 
-Defined in: [src/lib/tokens.ts:6](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L6)
+Defined in: [src/lib/tokens.ts:6](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/tokens.ts#L6)
 
 ### Type Parameters
 
@@ -84,7 +84,7 @@ Defined in: [src/lib/tokens.ts:6](https://github.com/D-Kay6/Infuse-TS/blob/62073
 
 > **Optional**\<`Type`\>(`dependency`): [`OptionalDependency`](../type-aliases/OptionalDependency.md)\<`Type`\>
 
-Defined in: [src/lib/tokens.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/tokens.ts#L7)
+Defined in: [src/lib/tokens.ts:7](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/tokens.ts#L7)
 
 ### Type Parameters
 

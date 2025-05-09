@@ -124,12 +124,12 @@ export class Container implements IContainer {
   public constructor() {}
 
   public register<Type>(identifier: Identifier<Type>, factory: Factory<Type>): IReferenceRegistration<Type> {
-    const provider = new FactoryProvider(identifier, factory, this);
+    const provider = new FactoryProvider(this, factory);
     return new RegistrationBuilder(identifier, this.registry, provider);
   }
 
   public registerInstance<Type>(identifier: Identifier<Type>, instance: Type): IValueRegistration<Type> {
-    const provider = new ValueProvider(identifier, instance);
+    const provider = new ValueProvider(instance);
     return new RegistrationBuilder(identifier, this.registry, provider);
   }
 

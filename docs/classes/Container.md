@@ -6,7 +6,7 @@
 
 # Class: Container
 
-Defined in: [src/lib/container.ts:99](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L99)
+Defined in: [src/lib/container.ts:99](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L99)
 
 A container for managing components.
 
@@ -20,7 +20,7 @@ A container for managing components.
 
 > **new Container**(): `Container`
 
-Defined in: [src/lib/container.ts:124](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L124)
+Defined in: [src/lib/container.ts:124](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L124)
 
 #### Returns
 
@@ -34,7 +34,7 @@ Defined in: [src/lib/container.ts:124](https://github.com/D-Kay6/Infuse-TS/blob/
 
 > **get** `static` **default**(): [`IContainer`](../interfaces/IContainer.md)
 
-Defined in: [src/lib/container.ts:106](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L106)
+Defined in: [src/lib/container.ts:106](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L106)
 
 Get the default container instance.
 
@@ -50,7 +50,7 @@ The default container is a singleton, created on first access.
 
 > **set** `static` **default**(`container`): `void`
 
-Defined in: [src/lib/container.ts:118](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L118)
+Defined in: [src/lib/container.ts:118](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L118)
 
 Override the default container instance.
 
@@ -72,7 +72,7 @@ The new default container instance.
 
 > **register**\<`Type`\>(`identifier`, `factory`): [`IReferenceRegistration`](../interfaces/IReferenceRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:126](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L126)
+Defined in: [src/lib/container.ts:126](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L126)
 
 Register a factory method for a component.
 
@@ -114,7 +114,7 @@ The registration builder.
 
 > **registerInstance**\<`Type`\>(`identifier`, `instance`): [`IValueRegistration`](../interfaces/IValueRegistration.md)\<`Type`\>
 
-Defined in: [src/lib/container.ts:131](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L131)
+Defined in: [src/lib/container.ts:131](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L131)
 
 Register an instance of a component.
 
@@ -160,7 +160,7 @@ Instances are always registered as singletons.
 
 > **registerComponent**\<`Class`\>(`component`, ...`dependencies`): [`IReferenceRegistration`](../interfaces/IReferenceRegistration.md)\<[`ComponentType`](../type-aliases/ComponentType.md)\<`Class`\>\>
 
-Defined in: [src/lib/container.ts:136](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L136)
+Defined in: [src/lib/container.ts:136](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L136)
 
 Register a component.
 
@@ -204,7 +204,7 @@ The registration builder.
 
 > **resolve**\<`Type`\>(`identifier`): `undefined` \| `Type`
 
-Defined in: [src/lib/container.ts:141](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L141)
+Defined in: [src/lib/container.ts:141](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L141)
 
 Resolve one registered item, or multiple items if the identifier is a collection.
 
@@ -238,7 +238,7 @@ The resolved instance(s) if found, otherwise undefined.
 
 > **resolve**\<`Type`\>(`collection`): `undefined` \| `Type`[]
 
-Defined in: [src/lib/container.ts:142](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L142)
+Defined in: [src/lib/container.ts:142](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L142)
 
 Resolve a registered item.
 
@@ -274,7 +274,7 @@ The resolved instance if found, otherwise undefined.
 
 > **resolveRequired**\<`Type`\>(`identifier`): `Type`
 
-Defined in: [src/lib/container.ts:166](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L166)
+Defined in: [src/lib/container.ts:166](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L166)
 
 Resolve one registered item, or multiple items if the identifier is a collection.
 
@@ -312,7 +312,7 @@ The resolved instance(s).
 
 > **resolveRequired**\<`Type`\>(`identifier`): `Type`[]
 
-Defined in: [src/lib/container.ts:167](https://github.com/D-Kay6/Infuse-TS/blob/62073e25b5ddbed6e970ac28f7ccfdc3169d3eec/src/lib/container.ts#L167)
+Defined in: [src/lib/container.ts:167](https://github.com/D-Kay6/Infuse-TS/blob/2b827980e37dbd9518746d6b95150b5d8563c940/src/lib/container.ts#L167)
 
 Resolve a registered item.
 
